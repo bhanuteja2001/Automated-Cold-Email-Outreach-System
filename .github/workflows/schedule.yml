@@ -3,16 +3,16 @@ name: Schedule Coldmail Script
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0,30 3 * * *'  # Runs at 3:00 AM and 3:30 AM UTC (9 PM - 9:30 PM CST)
-    - cron: '0,30 4 * * *'  # Runs at 4:00 AM and 4:30 AM UTC (10 PM - 10:30 PM CST)
-    - cron: '0,30 5 * * *'  # Runs at 5:00 AM and 5:30 AM UTC (11 PM - 11:30 PM CST)
-    - cron: '0,30 6 * * *'  # Runs at 6:00 AM and 6:30 AM UTC (12 AM - 12:30 AM CST)
-    - cron: '0 7 * * *'     # Runs at 7:00 AM UTC (1 AM CST)
-    - cron: '30 7 * * *'   # Runs at 7:30 AM UTC (1:30 AM CST)
-    - cron: '0,30 8 * * *' # Runs at 8:00 AM and 8:30 AM UTC (2:00 AM - 2:30 AM CST)
-    - cron: '0,30 9 * * *' # Runs at 9:00 AM and 9:30 AM UTC (3:00 AM - 3:30 AM CST)
-    - cron: '0,30 10 * * *' # Runs at 10:00 AM and 10:30 AM UTC (4:00 AM - 4:30 AM CST)
-    - cron: '0,30 11 * * *' # Runs at 11:00 AM and 11:30 AM UTC (5:00 AM - 5:30 AM CST)
+    - cron: '0 16 * * 2,3,4'    # Runs at 10:00 AM CST
+    - cron: '20 16 * * 2,3,4'   # Runs at 10:20 AM CST
+    - cron: '40 16 * * 2,3,4'   # Runs at 10:40 AM CST
+    - cron: '0 17 * * 2,3,4'    # Runs at 11:00 AM CST
+    - cron: '20 17 * * 2,3,4'   # Runs at 11:20 AM CST
+    - cron: '40 17 * * 2,3,4'   # Runs at 11:40 AM CST
+    - cron: '0 18 * * 2,3,4'    # Runs at 12:00 PM CST
+    - cron: '20 18 * * 2,3,4'   # Runs at 12:20 PM CST
+    - cron: '40 18 * * 2,3,4'   # Runs at 12:40 PM CST
+    - cron: '0 19 * * 2,3,4'    # Runs at 1:00 PM CST
 
 jobs:
   run-coldmail:
