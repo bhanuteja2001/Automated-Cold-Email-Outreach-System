@@ -1,8 +1,6 @@
 # Automated Cold Email Outreach System
 
-
-
-# Cold Email Automation Project
+![Alt text](arc_diagram.png)
 
 ## Overview
 
