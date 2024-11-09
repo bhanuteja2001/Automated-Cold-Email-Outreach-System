@@ -35,6 +35,11 @@ class RecruiterDataFetch:
         return None
 
     @staticmethod
+    def add_new_entry(entry):
+        sheet = client.open("RecruiterEmailList").sheet1
+        sheet.append_row(entry)
+
+    @staticmethod
     def update_status(people):
         sheet = client.open("RecruiterEmailList").sheet1
 

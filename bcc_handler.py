@@ -11,16 +11,15 @@ class BccHandler:
         name_parts = self.full_name.split()
         if len(name_parts) >= 2:
             return name_parts[0], name_parts[-1]
-        return name_parts[0], ""
+        elif len(name_parts) == 1:
+            return name_parts[0], ""  # Handle single name case
+        return "", ""  # Handle empty case
 
     def _generate_company_domain(self):
+        # Generate a valid company domain
         return re.sub(r'[^a-zA-Z0-9]', '', self.company.lower()) + '.com'
 
     def generate_email_combinations(self):
-        if self.email:
-            return self.email.split('@')[1]
-        return re.sub(r'[^a-zA-Z0-9]', '', self.company.lower()) + '.com'
-
         domain = self._generate_company_domain()
         first = self.first_name.lower()
         last = self.last_name.lower()
@@ -35,20 +34,28 @@ class BccHandler:
             f"{first}_{last}@{domain}",
             f"{last}{first_initial}@{domain}"
         ]
-        return list(set(combinations))  # Remove duplicates
+
+        # Remove duplicates and filter out invalid emails
+        valid_combinations = [email for email in set(combinations) if self.is_valid_email(email)]
+        
+        return valid_combinations
+
+    def is_valid_email(self, email):
+        """Simple email validation."""
+        return '@' in email and '.' in email.split('@')[1]
 
     def get_main_and_bcc_emails(self):
-        if not self.first_name or not self.last_name:
-            return self.email, [], self.first_name
+        if not self.first_name:
+            return self.email, [], ""  # Return empty first name
 
         combinations = self.generate_email_combinations()
         
         if self.email:
             main_email = self.email
-            bcc_emails = combinations
+            bcc_emails = [email for email in combinations if email != main_email]  # Exclude main email from BCC
         else:
             main_email = combinations[0] if combinations else None
-            bcc_emails = combinations[1:] if combinations else []
+            bcc_emails = combinations[1:] if len(combinations) > 1 else []
 
         return main_email, bcc_emails, self.first_name
 

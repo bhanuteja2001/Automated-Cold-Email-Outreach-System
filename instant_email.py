@@ -1,22 +1,36 @@
-import smtplib
 import os
-import json
-import datetime
-from bcc_handler import handle_bcc
+import smtplib
+from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
-from jsonify import RecruiterDataProcessor
+from bcc_handler import handle_bcc
 from sheets import RecruiterDataFetch
 
+def get_input(prompt, optional=False):
+    while True:
+        value = input(prompt).strip()
+        if value or optional:
+            return value
 
-class ColdMail:
+def get_type():
+    types = ["DE_Manager", "Director DE", "DS_Manager", "Recruiter"]
+    print("Select the type:")
+    for i, t in enumerate(types, 1):
+        print(f"{i}. {t}")
+    while True:
+        try:
+            choice = int(input("Enter the number: "))
+            if 1 <= choice <= len(types):
+                return types[choice - 1]
+        except ValueError:
+            pass
+        print("Invalid choice. Please try again.")
+
+class InstantColdMail:
     def __init__(self, Name, Email, Company, Type, server, bcc=None):
         self.server = server
-        self.FROM = os.environ["gmail_email"]
-        self.TO = [Email] if isinstance(Email, str) else Email
-        self.BCC = bcc if isinstance(bcc, list) else [bcc] if bcc else []
-
+        self.bcc = bcc if isinstance(bcc, list) else [bcc] if bcc else []
 
         # Initialize subject and content
         subject = "Default Subject"
@@ -43,9 +57,13 @@ class ColdMail:
             resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
         else:
             print(f"Unknown Type: {Type}. Email will not be sent.")
-            return  # Exit the constructor if Type is unknown
+            return
 
         # Create the email message
+        self.FROM = os.environ["gmail_email"]
+        self.TO = [Email]
+        self.BCC = self.bcc
+
         self.msg = MIMEMultipart()
         self.msg["From"] = self.FROM
         self.msg["To"] = ", ".join(self.TO)
@@ -73,8 +91,12 @@ class ColdMail:
 
     def send_mail(self):
         try:
-            # Combine all recipients for sending
+            # Combine all recipients
             all_recipients = self.TO + self.BCC
+            
+            # Remove BCC from headers if it exists
+            if 'Bcc' in self.msg:
+                del self.msg['Bcc']
             
             # Send the email
             self.server.sendmail(self.FROM, all_recipients, self.msg.as_string())
@@ -84,35 +106,46 @@ class ColdMail:
         except Exception as e:
             print(f"Failed to send email: {e}")
 
-if __name__ == "__main__":
-    # Run the script
+def send_instant_email():
+    name = get_input("Enter Name (Full Name or First Name): ")
+    email = get_input("Enter Email (optional): ", optional=True)
+    company = get_input("Enter Company Name: ")
+    type_ = get_type()
+
+    main_email, bcc_emails, first_name = handle_bcc(name, company, email)
+
+    if not main_email:
+        print("Unable to generate a valid email. Aborting.")
+        return
+
+    # Set up SMTP server
     server = smtplib.SMTP("smtp.gmail.com:587")
     server.ehlo()
     server.starttls()
     server.login(os.environ["gmail_email"], os.environ["gmail_password"])
 
-    processor = RecruiterDataProcessor()
-    people = json.loads(processor.get_json_data())
-    print("Cold_Email.py received {} records".format(len(people)))
+    # Send email
+    try:
+        instant_mail = InstantColdMail(first_name, main_email, company, type_, server, bcc=bcc_emails)
+        
+        # Update Google Sheet
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        new_entry = [
+            "",  # ID will be auto-generated
+            name,
+            main_email,
+            company,
+            "Email Sent",
+            type_,
+            timestamp
+        ]
+        RecruiterDataFetch.add_new_entry(new_entry)
+        print("Entry added to Google Sheet")
+        
+    except Exception as e:
+        print(f"Failed to send email: {e}")
+    finally:
+        server.quit()
 
-    # Go through each recruiter, taking the name, company, and email
-    for person in people:
-        if person and "Name" in person and "Company" in person:
-            main_email, bcc_emails, first_name = handle_bcc(person["Name"], person["Company"], person.get("Email"))
-            
-            if main_email:
-                print(f"Sending email to {first_name} at {main_email}")
-                coldmail = ColdMail(
-                    first_name,  # Use first_name here instead of full Name
-                    main_email,
-                    person["Company"],
-                    person["Type"],
-                    server,
-                    bcc=bcc_emails
-                )
-            person["Status"] = "Email Sent"
-            person["Timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    RecruiterDataFetch.update_status(people)
-
-    server.quit()
+if __name__ == "__main__":
+    send_instant_email()
