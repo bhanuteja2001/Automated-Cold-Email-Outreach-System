@@ -5,7 +5,7 @@ from sheets import RecruiterDataFetch
 class RecruiterDataProcessor:
     def __init__(self):
         self.raw_data = RecruiterDataFetch.recruiter_all_records()
-        self.headers = ["ID", "Name", "Email", "Company", "Status", "Type"]
+        self.headers = ["ID", "Name", "Email", "Company", "Status", "Type", "Timestamp"]
         self.data = []
 
     def process_data(self):

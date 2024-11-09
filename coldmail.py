@@ -1,6 +1,7 @@
 import smtplib
 import os
 import json
+import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
@@ -113,6 +114,7 @@ if __name__ == "__main__":
                 server,
             )
             person["Status"] = "Email Sent"
+            person["Timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     RecruiterDataFetch.update_status(people)
 

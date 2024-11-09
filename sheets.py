@@ -2,6 +2,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pprint
 import random
+import datetime
 
 # Authorize the API
 scope = [
@@ -18,10 +19,10 @@ class RecruiterDataFetch:
     def recruiter_all_records():
         # Fetch the sheet
         sheet = client.open("RecruiterEmailList").sheet1
-        python_sheet = sheet.get_values("A:F")
+        python_sheet = sheet.get_values("A:G")
 
         # Skip the header and filter records where the Status (E column) is not equal to "Email Sent"
-        filtered_records = [row for row in python_sheet[1:] if row[4] != "Email Sent"]
+        filtered_records = [row for row in python_sheet[1:] if row[4] != "Email Sent" and row[0]] 
 
         pp = pprint.PrettyPrinter()
         # pp.pprint(filtered_records)  # Uncomment for debugging
@@ -43,6 +44,8 @@ class RecruiterDataFetch:
             ):  # Check if 'ID' exists in the person dictionary
                 id_to_update = person["ID"]  # Assuming ID is stored in 'ID'
                 status = "Email Sent"  # New status to set
+                timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 cell = sheet.find(str(id_to_update))  # Find the cell with the ID
                 if cell:
                     sheet.update_cell(cell.row, 5, status)  # E column is the 5th column
+                    sheet.update_cell(cell.row, 7, timestamp)  # G column for timestamp
