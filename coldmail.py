@@ -2,6 +2,7 @@ import smtplib
 import os
 import json
 import datetime
+from bcc_handler import handle_bcc
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
@@ -10,8 +11,9 @@ from sheets import RecruiterDataFetch
 
 
 class ColdMail:
-    def __init__(self, Name, Email, Company, Type, server):
+    def __init__(self, Name, Email, Company, Type, server, bcc=None):
         self.server = server  # Store server instance
+        self.bcc = bcc if bcc else []
 
         # Initialize subject and content
         subject = "Default Subject"
@@ -47,6 +49,7 @@ class ColdMail:
         # Create the email message
         self.FROM = os.environ["gmail_email"]
         self.TO = [Email]
+        self.BCC = self.bcc
 
         self.msg = MIMEMultipart()
         self.msg["From"] = self.FROM
@@ -94,25 +97,19 @@ if __name__ == "__main__":
 
     # Go through each recruiter, taking the name, company, and email
     for person in people:
-        if (
-            person
-            and "Name" in person
-            and "Email" in person
-            and "Company" in person
-            and "Type" in person
-        ):
-            print(
-                "Sending email to {} from {} who is the {}".format(
-                    person["Name"], person["Company"], person["Type"]
+        if person and "Name" in person and "Company" in person:
+            main_email, bcc_emails, first_name = handle_bcc(person["Name"], person["Company"], person.get("Email"))
+            
+            if main_email:
+                print(f"Sending email to {first_name} at {main_email}")
+                coldmail = ColdMail(
+                    first_name,  # Use first_name here instead of full Name
+                    main_email,
+                    person["Company"],
+                    person["Type"],
+                    server,
+                    bcc=bcc_emails
                 )
-            )
-            coldmail = ColdMail(
-                person["Name"],
-                person["Email"],
-                person["Company"],
-                person["Type"],
-                server,
-            )
             person["Status"] = "Email Sent"
             person["Timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
