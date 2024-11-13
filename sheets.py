@@ -49,8 +49,8 @@ class RecruiterDataFetch:
             ):  # Check if 'ID' exists in the person dictionary
                 id_to_update = person["ID"]  # Assuming ID is stored in 'ID'
                 status = "Email Sent"  # New status to set
-                timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                #timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 cell = sheet.find(str(id_to_update))  # Find the cell with the ID
                 if cell:
                     sheet.update_cell(cell.row, 5, status)  # E column is the 5th column
-                    sheet.update_cell(cell.row, 7, timestamp)  # G column for timestamp
+                    #sheet.update_cell(cell.row, 7, timestamp)  # G column for timestamp

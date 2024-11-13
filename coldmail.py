@@ -93,17 +93,34 @@ if __name__ == "__main__":
 
     processor = RecruiterDataProcessor()
     people = json.loads(processor.get_json_data())
-    print("Cold_Email.py received {} records".format(len(people)))
+    #print("Cold_Email.py received {} records".format(len(people)))
 
     # Go through each recruiter, taking the name, company, and email
     for person in people:
         if person and "Name" in person and "Company" in person:
-            main_email, bcc_emails, first_name = handle_bcc(person["Name"], person["Company"], person.get("Email"))
+            name_parts = person["Name"].split()
+            
+            if len(name_parts) == 1:
+                # If only first name is given
+                first_name = name_parts[0]
+                main_email = person.get("Email")
+                bcc_emails = None
+            else:
+                # If full name is given
+                first_name = name_parts[0]
+                last_name = name_parts[-1]
+                if person.get("Email"):
+                    main_email = person["Email"]
+                    # Use bcc_handler to get potential BCC emails
+                    _, bcc_emails, _ = handle_bcc(f"{first_name} {last_name}", person["Company"], None)
+                else:
+                    # If no email is provided, use bcc_handler for both main and BCC emails
+                    main_email, bcc_emails, _ = handle_bcc(f"{first_name} {last_name}", person["Company"], None)
             
             if main_email:
                 print(f"Sending email to {first_name} at {main_email}")
                 coldmail = ColdMail(
-                    first_name,  # Use first_name here instead of full Name
+                    first_name,
                     main_email,
                     person["Company"],
                     person["Type"],
@@ -111,7 +128,7 @@ if __name__ == "__main__":
                     bcc=bcc_emails
                 )
             person["Status"] = "Email Sent"
-            person["Timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            #person["Timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     RecruiterDataFetch.update_status(people)
 
