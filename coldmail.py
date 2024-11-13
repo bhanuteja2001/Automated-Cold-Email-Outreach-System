@@ -2,6 +2,7 @@ import smtplib
 import os
 import json
 import datetime
+import pytz
 from bcc_handler import handle_bcc
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -128,7 +129,17 @@ if __name__ == "__main__":
                     bcc=bcc_emails
                 )
             person["Status"] = "Email Sent"
-            #person["Timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+            # Create a timezone object for CST
+            cst = pytz.timezone('US/Central')
+            
+            # Get the current time in CST
+            cst_time = datetime.datetime.now(cst)
+            
+            # Format the timestamp
+            timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
+                
+            person["Timestamp"] = timestamp
 
     RecruiterDataFetch.update_status(people)
 

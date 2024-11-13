@@ -1,6 +1,7 @@
 import os
 import smtplib
-from datetime import datetime
+import pytz
+import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
@@ -129,7 +130,17 @@ def send_instant_email():
         instant_mail = InstantColdMail(first_name, main_email, company, type_, server, bcc=bcc_emails)
         
         # Update Google Sheet
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        # Create a timezone object for CST
+        cst = pytz.timezone('US/Central')
+        
+        # Get the current time in CST
+        cst_time = datetime.datetime.now(cst)
+        
+        # Format the timestamp
+        timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
+                
+
+        
         new_entry = [
             "",  # ID will be auto-generated
             name,
