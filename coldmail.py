@@ -10,14 +10,13 @@ from email.mime.application import MIMEApplication
 from jsonify import RecruiterDataProcessor
 from sheets import RecruiterDataFetch
 
-
 class ColdMail:
-    def __init__(self, Name, Email, Company, Type, server, bcc=None):
+    def __init__(self, Name, Email, Company, Type, server, bcc=None, priority=None):
         self.server = server
         self.FROM = os.environ["gmail_email"]
         self.TO = [Email] if isinstance(Email, str) else Email
         self.BCC = bcc if isinstance(bcc, list) else [bcc] if bcc else []
-
+        self.priority = priority
 
         # Initialize subject and content
         subject = "Default Subject"
@@ -44,7 +43,7 @@ class ColdMail:
             resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
         else:
             print(f"Unknown Type: {Type}. Email will not be sent.")
-            return  # Exit the constructor if Type is unknown
+            return
 
         # Create the email message
         self.msg = MIMEMultipart()
@@ -94,28 +93,21 @@ if __name__ == "__main__":
 
     processor = RecruiterDataProcessor()
     people = json.loads(processor.get_json_data())
-    #print("Cold_Email.py received {} records".format(len(people)))
 
-    # Go through each recruiter, taking the name, company, and email
     for person in people:
         if person and "Name" in person and "Company" in person:
             name_parts = person["Name"].split()
             
             if len(name_parts) == 1:
-                # If only first name is given
                 first_name = name_parts[0]
                 main_email = person.get("Email")
                 bcc_emails = None
             else:
-                # If full name is given
                 first_name = name_parts[0]
                 last_name = name_parts[-1]
                 if person.get("Email"):
                     main_email = person["Email"]
-                    # Use bcc_handler to get potential BCC emails
-                    _, bcc_emails, _ = handle_bcc(f"{first_name} {last_name}", person["Company"], None)
                 else:
-                    # If no email is provided, use bcc_handler for both main and BCC emails
                     main_email, bcc_emails, _ = handle_bcc(f"{first_name} {last_name}", person["Company"], None)
             
             if main_email:
@@ -126,19 +118,15 @@ if __name__ == "__main__":
                     person["Company"],
                     person["Type"],
                     server,
-                    bcc=bcc_emails
+                    bcc=bcc_emails,
+                    priority=person.get("Priority", "No Priority")
                 )
             person["Status"] = "Email Sent"
+            person["Priority"] = "No Priority"  # Reset priority after sending
 
-            # Create a timezone object for CST
             cst = pytz.timezone('US/Central')
-            
-            # Get the current time in CST
             cst_time = datetime.datetime.now(cst)
-            
-            # Format the timestamp
             timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
-                
             person["Timestamp"] = timestamp
 
     RecruiterDataFetch.update_status(people)

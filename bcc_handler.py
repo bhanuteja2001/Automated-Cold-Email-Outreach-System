@@ -12,11 +12,10 @@ class BccHandler:
         if len(name_parts) >= 2:
             return name_parts[0], name_parts[-1]
         elif len(name_parts) == 1:
-            return name_parts[0], ""  # Handle single name case
-        return "", ""  # Handle empty case
+            return name_parts[0], ""
+        return "", ""
 
     def _generate_company_domain(self):
-        # Generate a valid company domain
         return re.sub(r'[^a-zA-Z0-9]', '', self.company.lower()) + '.com'
 
     def generate_email_combinations(self):
@@ -35,24 +34,22 @@ class BccHandler:
             f"{last}{first_initial}@{domain}"
         ]
 
-        # Remove duplicates and filter out invalid emails
         valid_combinations = [email for email in set(combinations) if self.is_valid_email(email)]
         
         return valid_combinations
 
     def is_valid_email(self, email):
-        """Simple email validation."""
         return '@' in email and '.' in email.split('@')[1]
 
     def get_main_and_bcc_emails(self):
         if not self.first_name:
-            return self.email, [], ""  # Return empty first name
+            return self.email, [], ""
 
         combinations = self.generate_email_combinations()
         
         if self.email:
             main_email = self.email
-            bcc_emails = [email for email in combinations if email != main_email]  # Exclude main email from BCC
+            bcc_emails = [email for email in combinations if email != main_email]
         else:
             main_email = combinations[0] if combinations else None
             bcc_emails = combinations[1:] if len(combinations) > 1 else []

@@ -1,0 +1,51 @@
+name: Process Email Queue
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Monday
+    - cron: '0 11 * * 1'    # 5:00 AM CST
+    - cron: '30 11 * * 1'   # 5:30 AM CST
+    - cron: '0 12 * * 1'    # 6:00 AM CST
+    - cron: '30 12 * * 1'   # 6:30 AM CST
+    - cron: '0 13 * * 1'    # 7:00 AM CST
+    - cron: '30 13 * * 1'   # 7:30 AM CST
+    # Tuesday, Wednesday, Thursday
+    - cron: '0 13 * * 2-4'  # 7:00 AM CST
+    - cron: '30 13 * * 2-4' # 7:30 AM CST
+    - cron: '0 14 * * 2-4'  # 8:00 AM CST
+    - cron: '30 14 * * 2-4' # 8:30 AM CST
+    - cron: '0 15 * * 2-4'  # 9:00 AM CST
+    - cron: '30 15 * * 2-4' # 9:30 AM CST
+    - cron: '0 16 * * 2-4'  # 10:00 AM CST
+    - cron: '30 16 * * 2-4' # 10:30 AM CST
+    # Friday
+    - cron: '0 12 * * 5'    # 6:00 AM CST
+    - cron: '30 12 * * 5'   # 6:30 AM CST
+    - cron: '0 13 * * 5'    # 7:00 AM CST
+    - cron: '30 13 * * 5'   # 7:30 AM CST
+
+jobs:
+  process-queue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.12.1'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create client_key.json file
+        run: echo "${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}" > client_key.json
+
+      - name: Run queue processor
+        run: python queue_processor.py
+        env:
+          gmail_email: ${{ secrets.gmail_email }}
+          gmail_password: ${{ secrets.gmail_password }}
+          MAX_EMAILS_PER_RUN: 3

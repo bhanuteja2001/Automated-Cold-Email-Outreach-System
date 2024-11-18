@@ -14,21 +14,14 @@ file_name = "client_key.json"
 creds = ServiceAccountCredentials.from_json_keyfile_name(file_name, scope)
 client = gspread.authorize(creds)
 
-
 class RecruiterDataFetch:
     @staticmethod
     def recruiter_all_records():
-        # Fetch the sheet
         sheet = client.open("RecruiterEmailList").sheet1
-        python_sheet = sheet.get_values("A:G")
-
-        # Skip the header and filter records where the Status (E column) is not equal to "Email Sent"
+        python_sheet = sheet.get_values("A:H")
         filtered_records = [row for row in python_sheet[1:] if row[4] != "Email Sent" and row[0]] 
 
         pp = pprint.PrettyPrinter()
-        # pp.pprint(filtered_records)  # Uncomment for debugging
-
-        # Select one random record from filtered records if available
         if filtered_records:
             random_record = random.choice(filtered_records)
             print("Selected a random record")
@@ -45,21 +38,33 @@ class RecruiterDataFetch:
         sheet = client.open("RecruiterEmailList").sheet1
 
         for person in people:
-            if (
-                person and "ID" in person
-            ):  # Check if 'ID' exists in the person dictionary
-                id_to_update = person["ID"]  # Assuming ID is stored in 'ID'
-                status = "Email Sent"  # New status to set
-                # Create a timezone object for CST
+            if person and "ID" in person:
+                id_to_update = person["ID"]
+                status = "Email Sent"
+                priority = "No Priority"
                 cst = pytz.timezone('US/Central')
-                
-                # Get the current time in CST
                 cst_time = datetime.datetime.now(cst)
-                
-                # Format the timestamp
                 timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
                 
-                cell = sheet.find(str(id_to_update))  # Find the cell with the ID
+                cell = sheet.find(str(id_to_update))
                 if cell:
-                    sheet.update_cell(cell.row, 5, status)  # E column is the 5th column
-                    sheet.update_cell(cell.row, 7, timestamp)  # G column for timestamp
+                    sheet.update_cell(cell.row, 5, status)  # E column for Status
+                    sheet.update_cell(cell.row, 7, timestamp)  # G column for Timestamp
+                    sheet.update_cell(cell.row, 8, priority)  # H column for Priority
+
+    @staticmethod
+    def fetch_priority_emails():
+        sheet = client.open("RecruiterEmailList").sheet1
+        all_data = sheet.get_values("A:H")
+        priority_emails = [row for row in all_data[1:] if row[7] in ['High', 'Medium'] and row[4] != "Email Sent"]
+        return priority_emails
+
+    @staticmethod
+    def update_email_status(email_data):
+        sheet = client.open("RecruiterEmailList").sheet1
+        cell = sheet.find(email_data["ID"])
+        if cell:
+            row = cell.row
+            sheet.update_cell(row, 5, email_data["Status"])  # E column for Status
+            sheet.update_cell(row, 7, email_data["Timestamp"])  # G column for Timestamp
+            sheet.update_cell(row, 8, email_data["Priority"])  # H column for Priority
