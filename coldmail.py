@@ -107,6 +107,8 @@ if __name__ == "__main__":
                 last_name = name_parts[-1]
                 if person.get("Email"):
                     main_email = person["Email"]
+                    # Use bcc_handler to get potential BCC emails
+                    _, bcc_emails, _ = handle_bcc(f"{first_name} {last_name}", person["Company"], None)
                 else:
                     main_email, bcc_emails, _ = handle_bcc(f"{first_name} {last_name}", person["Company"], None)
             

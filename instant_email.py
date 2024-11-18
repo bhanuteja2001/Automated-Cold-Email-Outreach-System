@@ -28,37 +28,48 @@ def get_type():
             pass
         print("Invalid choice. Please try again.")
 
+def get_dynamic_points():
+    points = []
+    while True:
+        point = input("Enter a point (or press Enter to finish): ").strip()
+        if not point:
+            break
+        points.append(point)
+    return points
+
+def get_yes_no_input(prompt):
+    while True:
+        print(prompt)
+        print("1. Yes")
+        print("2. No")
+        choice = input("Enter your choice (1 or 2): ").strip()
+        if choice == '1':
+            return True
+        elif choice == '2':
+            return False
+        else:
+            print("Invalid input. Please enter 1 or 2.")
+
 class InstantColdMail:
-    def __init__(self, Name, Email, Company, Type, server, bcc=None):
+    def __init__(self, Name, Email, Company, Type, server, dynamic_points, bcc=None):
         self.server = server
         self.bcc = bcc if isinstance(bcc, list) else [bcc] if bcc else []
 
-        # Initialize subject and content
-        subject = "Default Subject"
-        content = "Default content. Please check the email type."
+        # Select the appropriate email template based on Type
+        template_file = self.get_template_file(Type)
+        
+        # Read the email template
+        with open(template_file, "r") as file:
+            content = file.read()
 
-        # Prepare the email content and subject based on the Type
-        if Type == "DE_Manager" or Type == "Director DE":
-            with open("Content/manager_DE.txt", "r") as file:
-                content = file.read()
-            content = content.format(Name=Name, Company=Company)
-            subject = f"Info on Data Engineering opportunities at {Company}"
-            resume_file = "Resumes/Bhanu_DE_Resume.pdf"
-        elif Type == "DS_Manager":
-            with open("Content/manager_DS.txt", "r") as file:
-                content = file.read()
-            content = content.format(Name=Name, Company=Company)
-            subject = f"Info on Data Science opportunities at {Company}"
-            resume_file = "Resumes/Bhanu_DS_Resume.pdf"
-        elif Type == "Recruiter":
-            with open("Content/Recruiter.txt", "r") as file:
-                content = file.read()
-            content = content.format(Name=Name, Company=Company)
-            subject = f"Info on 2025 New Grad / Spring opportunities at {Company}"
-            resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
-        else:
-            print(f"Unknown Type: {Type}. Email will not be sent.")
-            return
+        # Format the dynamic points
+        points_html = "\n".join([f"<li>{point}</li>" for point in dynamic_points])
+        
+        # Replace placeholders in the template
+        content = content.format(Name=Name, Company=Company, DynamicPoints=points_html)
+        
+        # Set subject and resume file based on Type
+        subject, resume_file = self.get_subject_and_resume(Type, Company)
 
         # Create the email message
         self.FROM = os.environ["gmail_email"]
@@ -73,73 +84,92 @@ class InstantColdMail:
         # Attach the email body
         self.msg.attach(MIMEText(content, "html"))
 
-        # Attach the appropriate resume file if it exists
-        if "resume_file" in locals():
-            self.attach_resume(resume_file)
-            # Send the email only if the resume file exists
-            self.send_mail()
+        # Attach the resume
+        self.attach_resume(resume_file)
+        self.send_mail()
+
+    def get_template_file(self, Type):
+        template_map = {
+            "DE_Manager": "Content/manager_DE.html",
+            "Director DE": "Content/director_DE.html",
+            "DS_Manager": "Content/manager_DS.html",
+            "Recruiter": "Content/Recruiter.html"
+        }
+        return template_map.get(Type, "Content/default_template.html")
+
+    def get_subject_and_resume(self, Type, Company):
+        if Type == "DE_Manager" or Type == "Director DE":
+            subject = f"Info on Data Engineering opportunities at {Company}"
+            resume_file = "Resumes/Bhanu_DE_Resume.pdf"
+        elif Type == "DS_Manager":
+            subject = f"Info on Data Science opportunities at {Company}"
+            resume_file = "Resumes/Bhanu_DS_Resume.pdf"
+        elif Type == "Recruiter":
+            subject = f"Info on 2025 New Grad / Spring opportunities at {Company}"
+            resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
         else:
-            print(f"No valid resume file for Type: {Type}. Email will not be sent.")
+            subject = f"Inquiry about opportunities at {Company}"
+            resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
+        return subject, resume_file
 
     def attach_resume(self, resume_file):
-        # Attach the specified resume file
         with open(resume_file, "rb") as resume:
             part = MIMEApplication(resume.read(), Name=os.path.basename(resume_file))
-            part["Content-Disposition"] = (
-                f'attachment; filename="{os.path.basename(resume_file)}"'
-            )
+            part["Content-Disposition"] = f'attachment; filename="{os.path.basename(resume_file)}"'
             self.msg.attach(part)
 
     def send_mail(self):
         try:
-            # Combine all recipients
             all_recipients = self.TO + self.BCC
-            
-            # Remove BCC from headers if it exists
-            if 'Bcc' in self.msg:
-                del self.msg['Bcc']
-            
-            # Send the email
             self.server.sendmail(self.FROM, all_recipients, self.msg.as_string())
-            
-            # Log the send (but don't reveal BCC recipients in the log)
             print(f"Email sent to {self.TO} (BCC recipients not shown)")
         except Exception as e:
             print(f"Failed to send email: {e}")
 
 def send_instant_email():
     name = get_input("Enter Name (Full Name or First Name): ")
-    email = get_input("Enter Email (optional): ", optional=True)
+    email = get_input("Enter Email: ")
     company = get_input("Enter Company Name: ")
     type_ = get_type()
 
-    main_email, bcc_emails, first_name = handle_bcc(name, company, email)
+    use_bcc = get_yes_no_input("Do you want to use BCC?")
+
+    name_parts = name.split()
+    if len(name_parts) == 1:
+        first_name = name_parts[0]
+        last_name = ""
+    else:
+        first_name = name_parts[0]
+        last_name = name_parts[-1]
+
+    main_email = email
+    bcc_emails = None
+
+    if use_bcc:
+        if email:
+            main_email = email
+            _, bcc_emails, _ = handle_bcc(f"{first_name} {last_name}", company, None)
+        else:
+            main_email, bcc_emails, _ = handle_bcc(f"{first_name} {last_name}", company, None)
 
     if not main_email:
         print("Unable to generate a valid email. Aborting.")
         return
 
-    # Set up SMTP server
+    print("Enter the dynamic points for the email:")
+    dynamic_points = get_dynamic_points()
+
     server = smtplib.SMTP("smtp.gmail.com:587")
     server.ehlo()
     server.starttls()
     server.login(os.environ["gmail_email"], os.environ["gmail_password"])
 
-    # Send email
     try:
-        instant_mail = InstantColdMail(first_name, main_email, company, type_, server, bcc=bcc_emails)
+        instant_mail = InstantColdMail(first_name, main_email, company, type_, server, dynamic_points, bcc=bcc_emails)
         
-        # Update Google Sheet
-        # Create a timezone object for CST
         cst = pytz.timezone('US/Central')
-        
-        # Get the current time in CST
         cst_time = datetime.datetime.now(cst)
-        
-        # Format the timestamp
         timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
-                
-
         
         new_entry = [
             "",  # ID will be auto-generated
@@ -148,7 +178,8 @@ def send_instant_email():
             company,
             "Email Sent",
             type_,
-            timestamp
+            timestamp,
+            "No Priority"  # Assuming default priority
         ]
         RecruiterDataFetch.add_new_entry(new_entry)
         print("Entry added to Google Sheet")
