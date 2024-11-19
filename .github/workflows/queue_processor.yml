@@ -35,17 +35,19 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.12.1'
+          python-version: '3.12.1'  # Replace with your Python version
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
 
       - name: Create client_key.json file
-        run: echo "${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}" > client_key.json
+        run: |
+          echo "{\"type\": \"service_account\", \"project_id\": \"linear-asset-343912\", \"private_key_id\": \"a1afbf111e9d3921296bee31168f2af676264ba2\", \"private_key\": \"-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCv3fXgwssLlrBh\n/s+8ilwCZB3AUJ3MeVPv36o9ODUDWR/E/PEDkkhpbpU9LMBUj9TzO7r9dARkNCjM\nIgH2Joy6H44U74a62M7CqWefQVQAN13YSMu4Qtte6KuuI/SFm//KAJNA4oaosKIw\nT87o1VNCctGrGw6tQ184iJNCuaNV1XoqVCVTbAVOUkr/lpgxL2XLejS3KBsAaKe9\n4FkxmqrYjFBFm8y6F111aJpXhMYbS5o1ACjYQxcQ8XNWzLX2CjbpGBj51R8u75mb\nPRV5kF/34QqE/4NhV4Df9xb0IWZXHqEeYlMzsqVaLFOpL3J7xSSyKaG3hDXdQc61\nNCYL4hYVAgMBAAECgf87E3akghQ+Nvmjr5NBSeVKzvtxYJaPlB29u+lq8KqNFlKr\nPXJ+Qypom3dG+tb0Ql8Z7dbot0QlOcqtRng+ugV3h9DvWGC1w4QB9r/8/US/dSNM\nnrLc3cYfECpoyqssphhKTQqmOYYrCHQVMPGvTG41nlSlBeorYvO7yTvR8B0F/Wj6\n8nTYT0EhkvoV1neMtXoLqHQjD0yRmDwl4GRoCpYW/BhnZI19VA8brbmorzzBrVs5\no/LEW/J/ORThNlp3H6QtRXxyqvunMkBfSvb6WO/yN2x58MpwLjj9v/G4VEmlBOI9\nNgqRugjn5C3m8DMybCvWx1kf4FOFjky3aNac12ECgYEA6j4eqLoq5d9SRjlgUU3c\nZ47K+7Svy6vWqlwNoBXLhoow4MLKB7I3+TdGwqnbD5cYl+GK8mMGao4GWUN8tq9T\n4d2Gkd6OGP8b7Ki4rw8fQulAdMC0bimU4bAh4r7ZxckpHBU4jKI0SpcEc55MRP+m\nLIltErbgm8K/CW74of0SNlECgYEAwDPFRkcCjCoN1Ho3/iu8Ku3d2oVTa+RHj9NZ\n1QTELzCNqz+My9I3AcuyoW2TAJWMhpajwJIPtNqCuGLfkNKT8TwT7HqvNyktV0C2\nrq1GM11ljUso0c1eiMapb2EiWTsIiOFEaT459X3cPa3AfepyhhS5nTeeYljRJO74\nPVOwfoUCgYEAijmn++cHw2g586iN9sxcYFu52jhweF5pqVPy0mGqHTVUzH0FnO8E\n6rI8tkhnNVbzM0TrqkbXFW/DvU7+vArQE/uWGmPbNFLuFoQln1/sEZ704zCICG3P\nJjK6fEQk2/rtoF3BZfOdqdpdzSA/X4QAek2KKL3z4tZTxuxOGcDty1ECgYA16k/c\ndu7wApv+jopGcl5GbJNfSSctjMvGPLNmXf/qfORAtYL5ae6kQk/JmMMz1r+kwX0N\n9+sQAHvK3XF5XpjBgujT3VZpUtO1NiIIvfKDVh+2ku7Qa5upIpFE/Sp1fWnXe9mE\n7D+17ahqZOMqbynREt8+iuuTCvcgNSjNizxnQQKBgQDS4bt10N5jCWj1m7XtaC7B\nbya8a6fVndit1Z1l4Qqa7XBaTTGRFwVBsH8tnBotuJDC79Nr4QRAfFp/pI1K04BU\nTjIkCk0Hksxf4mqzrHCXrMePKLJ5PGLAg5s4BXLeumPj2AOBmY2Sqwt1cjgK1OeW\ndKKRlwfbpC/X0tljg98bMA==\n-----END PRIVATE KEY-----\n\", \"client_email\": \"pythonsheetapi@linear-asset-343912.iam.gserviceaccount.com\", \"client_id\": \"109880981363412966853\", \"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\", \"token_uri\": \"https://oauth2.googleapis.com/token\", \"auth_provider_x509_cert_url\": \"https://www.googleapis.com/oauth2/v1/certs\", \"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/pythonsheetapi%40linear-asset-343912.iam.gserviceaccount.com\", \"universe_domain\": \"googleapis.com\"}" > client_key.json
 
       - name: Run queue processor
-        run: python queue_processor.py
+        run: |
+          python queue_processor.py
         env:
           gmail_email: ${{ secrets.gmail_email }}
           gmail_password: ${{ secrets.gmail_password }}
-          MAX_EMAILS_PER_RUN: 3
