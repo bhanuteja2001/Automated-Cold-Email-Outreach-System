@@ -9,27 +9,27 @@
     <p>Hi {Name},</p>
 
     <p>
-        Hope you are having a wonderful day! I'm Bhanu, a grad student (May '25) from the <b>University of Illinois at Urbana-Champaign (UIUC)</b> pursuing <b>Master of Science in
-        Information Management</b> and currently working as a Data Engineering Intern at AGCO Corporation. 
+        I'm Bhanu, a grad student (May '25) from <b>The University of Illinois at Urbana-Champaign (UIUC)</b> pursuing <b>Master of Science in
+        Information Management</b> and currently working as a <b>Data Engineering Intern</b> at <b>AGCO Corporation</b>. 
         I'm reaching out because I'm really interested to be part of {Company}'s Data Team.
     </p>
 
     <p>A bit about me:</p>
         <ol>
-            <li>Proven track record of designing and implementing robust data pipelines, with expertise in both <b>ETL and ELT methodologies</b>, ensuring efficient data processing and maintaining data quality standards.</li>
-            <li>Extensive experience across diverse industries including <b>BFS,  AgriTech, SaaS, and EdTech</b>.</li>
-            <li>Experience working with tools and platforms like <b>Databricks, Snowflake, AWS, dbt, Apache Airflow, and Alteryx</b>, showcasing a comprehensive skill set for modern data architecture.</li>
+            <li>Experience designing and implementing robust data pipelines, with expertise in both <b>ETL and ELT</b>, ensuring efficient data processing and maintaining strong data quality standards.</li>
+            <li>Diverse industry experience, including <b>BFS, AgriTech, SaaS, and EdTech</b>, which has given me a broad perspective on data challenges across different domains.</li>
+            <li>Hands-on experience in production environments with tools like <b>Databricks, Snowflake, AWS, dbt, Apache Airflow and Alteryx</b>.</li>
             <li>Ability to <b>automate/reduce manual effort using IaC (CloudFormation, Terraform)</b> and other best devops practices.</li>
         </ol>
 
     <p>
-        I'm looking for opportunities to grow as a data engineer, and {Company} seems like 
-        an ideal place to do that. If you have any openings that might fit my background, I'd be really 
+        I'm looking for opportunities to grow as a data engineer, and {Company} stands out to me as an ideal place to grow. 
+        If you have any openings that might fit my background (now or in the future), I'd be really 
         excited to hear about them.
     </p>
 
     <p>
-        I'm available for a <b>full-time internship / co-op for Spring 2025 (Starting Jan 2025) or a full-time position starting May 2025.</b>
+        I'm available for a <b>full-time position starting May 2025.</b>
         I've attached my resume, and you can also check out more of my work on my portfolio site: 
         <a href='https://sites.google.com/view/bhanukurakula/'>My Portfolio</a>.
     </p>

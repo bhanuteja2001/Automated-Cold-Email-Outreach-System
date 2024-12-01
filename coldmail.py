@@ -28,7 +28,7 @@ class ColdMail:
                 content = file.read()
             content = content.format(Name=Name, Company=Company)
             subject = f"Info on Data Engineering opportunities at {Company}"
-            resume_file = "Resumes/Bhanu_DE_Resume.pdf"
+            resume_file = "Resumes/Bhanu_Kurakula_DE_Resume.pdf"
         elif Type == "DS_Manager":
             with open("Content/manager_DS.txt", "r") as file:
                 content = file.read()
@@ -36,10 +36,10 @@ class ColdMail:
             subject = f"Info on Data Science opportunities at {Company}"
             resume_file = "Resumes/Bhanu_DS_Resume.pdf"
         elif Type == "Recruiter":
-            with open("Content/Recruiter.txt", "r") as file:
+            with open("Content/Recruiter.html", "r") as file:
                 content = file.read()
             content = content.format(Name=Name, Company=Company)
-            subject = f"Info on 2025 New Grad / Spring opportunities at {Company}"
+            subject = f"Inquiry About Full-Time Opportunities at {Company}"
             resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
         else:
             print(f"Unknown Type: {Type}. Email will not be sent.")

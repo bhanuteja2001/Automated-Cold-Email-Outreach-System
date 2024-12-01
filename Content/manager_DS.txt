@@ -9,8 +9,8 @@
     <p>Hi {Name},</p>
 
     <p>
-        Hope you are having a wonderful day! I'm Bhanu, a grad student (May '25) from the <b>University of Illinois at Urbana-Champaign (UIUC)</b> pursuing <b>Master of Science in
-        Information Management (Data Science & Analytics)</b> and currently working as Advanced Analytics Intern at AGCO Corporation. 
+        I'm Bhanu, a grad student from <b>The University of Illinois at Urbana-Champaign (UIUC)</b> pursuing <b>Master of Science in
+        Information Management (Data Science & Analytics)</b> and currently working as <b>Advanced Analytics Intern</b> at <b>AGCO Corporation</b>. 
         I'm reaching out because I'm really interested to be part of {Company}'s Data Team.
     </p>
 
@@ -29,7 +29,7 @@
     </p>
 
     <p>
-        I'm available for a <b>full-time internship / co-op for Spring 2025 (Starting Jan 2025) or a full-time position starting May 2025.</b>
+        I'm available for a <b>full-time position starting May 2025.</b>
         I've attached my resume, and you can also check out more of my work on my portfolio site: 
         <a href='https://sites.google.com/view/bhanukurakula/'>My Portfolio</a>.
     </p>

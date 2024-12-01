@@ -100,12 +100,12 @@ class InstantColdMail:
     def get_subject_and_resume(self, Type, Company):
         if Type == "DE_Manager" or Type == "Director DE":
             subject = f"Info on Data Engineering opportunities at {Company}"
-            resume_file = "Resumes/Bhanu_DE_Resume.pdf"
+            resume_file = "Resumes/Bhanu_Kurakula_DE_Resume.pdf"
         elif Type == "DS_Manager":
             subject = f"Info on Data Science opportunities at {Company}"
             resume_file = "Resumes/Bhanu_DS_Resume.pdf"
         elif Type == "Recruiter":
-            subject = f"Info on 2025 New Grad / Spring opportunities at {Company}"
+            subject = f"Inquiry About Full-Time Opportunities at {Company}"
             resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
         else:
             subject = f"Inquiry about opportunities at {Company}"
