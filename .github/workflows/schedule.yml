@@ -3,41 +3,41 @@ name: Schedule Coldmail Script
 on:
   workflow_dispatch:
   schedule:
-    # - cron: '0 12 * * 2'    # 6:00 AM CST
-    # - cron: '15 12 * * 2'   # 6:15 AM CST
-    # - cron: '30 12 * * 2'   # 6:30 AM CST
-    # - cron: '45 12 * * 2'   # 6:45 AM CST
-    # - cron: '0 13 * * 2'    # 7:00 AM CST
-    # - cron: '0 15 * * 2'    # 9:00 AM CST
-    # - cron: '30 15 * * 2'   # 9:30 AM CST
-    # - cron: '0 16 * * 2'    # 10:00 AM CST
-    # - cron: '30 16 * * 2'   # 10:30 AM CST
-    # - cron: '0 17 * * 2'    # 11:00 AM CST
-    # - cron: '0 12 * * 3'    # 6:00 AM CST
-    # - cron: '15 12 * * 3'   # 6:15 AM CST
-    # - cron: '30 12 * * 3'   # 6:30 AM CST
-    # - cron: '45 12 * * 3'   # 6:45 AM CST
-    # - cron: '0 13 * * 3'    # 7:00 AM CST
-    # - cron: '0 15 * * 3'    # 9:00 AM CST
-    # - cron: '15 15 * * 3'   # 9:15 AM CST
-    # - cron: '30 15 * * 3'   # 9:30 AM CST
-    # - cron: '45 15 * * 3'   # 9:45 AM CST
-    # - cron: '0 16 * * 3'    # 10:00 AM CST
-    # - cron: '0 12 * * 4'    # 6:00 AM CST
-    # - cron: '15 12 * * 4'   # 6:15 AM CST
-    # - cron: '30 12 * * 4'   # 6:30 AM CST
-    # - cron: '45 12 * * 4'   # 6:45 AM CST
-    # - cron: '0 13 * * 4'    # 7:00 AM CST
-    # - cron: '0 15 * * 4'    # 9:00 AM CST
-    # - cron: '15 15 * * 4'   # 9:15 AM CST
-    # - cron: '30 15 * * 4'   # 9:30 AM CST
-    # - cron: '45 15 * * 4'   # 9:45 AM CST
-    # - cron: '0 16 * * 4'    # 10:00 AM CST
-    # - cron: '0 20 * * 4'    # 2:00 PM CST
-    # - cron: '15 20 * * 4'   # 2:15 PM CST
-    # - cron: '30 20 * * 4'   # 2:30 PM CST
-    # - cron: '45 20 * * 4'   # 2:45 PM CST
-    # - cron: '0 21 * * 4'    # 3:00 PM CST
+    - cron: '0 12 * * 2'    # 6:00 AM CST
+    - cron: '15 12 * * 2'   # 6:15 AM CST
+    - cron: '30 12 * * 2'   # 6:30 AM CST
+    - cron: '45 12 * * 2'   # 6:45 AM CST
+    - cron: '0 13 * * 2'    # 7:00 AM CST
+    - cron: '0 15 * * 2'    # 9:00 AM CST
+    - cron: '30 15 * * 2'   # 9:30 AM CST
+    - cron: '0 16 * * 2'    # 10:00 AM CST
+    - cron: '30 16 * * 2'   # 10:30 AM CST
+    - cron: '0 17 * * 2'    # 11:00 AM CST
+    - cron: '0 12 * * 3'    # 6:00 AM CST
+    - cron: '15 12 * * 3'   # 6:15 AM CST
+    - cron: '30 12 * * 3'   # 6:30 AM CST
+    - cron: '45 12 * * 3'   # 6:45 AM CST
+    - cron: '0 13 * * 3'    # 7:00 AM CST
+    - cron: '0 15 * * 3'    # 9:00 AM CST
+    - cron: '15 15 * * 3'   # 9:15 AM CST
+    - cron: '30 15 * * 3'   # 9:30 AM CST
+    - cron: '45 15 * * 3'   # 9:45 AM CST
+    - cron: '0 16 * * 3'    # 10:00 AM CST
+    - cron: '0 12 * * 4'    # 6:00 AM CST
+    - cron: '15 12 * * 4'   # 6:15 AM CST
+    - cron: '30 12 * * 4'   # 6:30 AM CST
+    - cron: '45 12 * * 4'   # 6:45 AM CST
+    - cron: '0 13 * * 4'    # 7:00 AM CST
+    - cron: '0 15 * * 4'    # 9:00 AM CST
+    - cron: '15 15 * * 4'   # 9:15 AM CST
+    - cron: '30 15 * * 4'   # 9:30 AM CST
+    - cron: '45 15 * * 4'   # 9:45 AM CST
+    - cron: '0 16 * * 4'    # 10:00 AM CST
+    - cron: '0 20 * * 4'    # 2:00 PM CST
+    - cron: '15 20 * * 4'   # 2:15 PM CST
+    - cron: '30 20 * * 4'   # 2:30 PM CST
+    - cron: '45 20 * * 4'   # 2:45 PM CST
+    - cron: '0 21 * * 4'    # 3:00 PM CST
 
 
 jobs:
