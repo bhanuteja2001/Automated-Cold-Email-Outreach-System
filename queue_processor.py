@@ -55,8 +55,9 @@ def process_queue():
     emails_to_send = prioritized_emails[:max_emails]
 
     for email in emails_to_send:
+        print("Email sending to ", email[1].split(" ")[0])
         try:
-            ColdMail(email[1], email[2], email[3], email[5], server, priority=email[7])
+            ColdMail(email[1].split()[0], email[2], email[3], email[5], server, priority=email[7])
             
             RecruiterDataFetch.update_email_status({
                 "ID": email[0],
