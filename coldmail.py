@@ -123,6 +123,8 @@ if __name__ == "__main__":
                     bcc=bcc_emails,
                     priority=person.get("Priority", "No Priority")
                 )
+
+            
             person["Status"] = "Email Sent"
             person["Priority"] = "No Priority"  # Reset priority after sending
 
