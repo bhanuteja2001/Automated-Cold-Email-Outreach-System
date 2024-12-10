@@ -170,6 +170,19 @@ def send_instant_email():
         cst = pytz.timezone('US/Central')
         cst_time = datetime.datetime.now(cst)
         timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
+
+        Transaction_entry = [
+            timestamp,
+            company,
+            name,
+            email,
+            "Email Sent",
+            type_,
+            "Instant Send"
+        ]
+
+        RecruiterDataFetch.add_transaction(Transaction_entry)
+        print(f"Transaction added for {name} from {company}")
         
         new_entry = [
             "",  # ID will be auto-generated
@@ -182,7 +195,7 @@ def send_instant_email():
             "No Priority"  # Assuming default priority
         ]
         RecruiterDataFetch.add_new_entry(new_entry)
-        print("Entry added to Google Sheet")
+        print(f"Entry for {name} and {company} added to Google Sheet-1")
         
     except Exception as e:
         print(f"Failed to send email: {e}")

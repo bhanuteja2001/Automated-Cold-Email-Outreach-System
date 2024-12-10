@@ -68,3 +68,9 @@ class RecruiterDataFetch:
             sheet.update_cell(row, 5, email_data["Status"])  # E column for Status
             sheet.update_cell(row, 7, email_data["Timestamp"])  # G column for Timestamp
             sheet.update_cell(row, 8, email_data["Priority"])  # H column for Priority
+
+    @staticmethod
+    def add_transaction(Transaction):
+        sheet = client.open("RecruiterEmailList").worksheet("Sheet3")
+        #new_row = [date, company, name, email, status, title, priority]
+        sheet.append_row(Transaction)
