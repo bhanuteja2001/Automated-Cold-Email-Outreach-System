@@ -124,14 +124,44 @@ if __name__ == "__main__":
                     priority=person.get("Priority", "No Priority")
                 )
 
+                
             
-            person["Status"] = "Email Sent"
-            person["Priority"] = "No Priority"  # Reset priority after sending
-
             cst = pytz.timezone('US/Central')
             cst_time = datetime.datetime.now(cst)
             timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
+            
+            try:
+                # Prepare the transaction entry
+                Transaction_entry = [
+                    timestamp,
+                    person["Company"],
+                    person["Name"],
+                    person["Email"],
+                    "Email Sent",
+                    person["Type"],
+                    person.get("Priority", "No Priority")
+                ]
+                
+                # Add the transaction
+                RecruiterDataFetch.add_transaction(Transaction_entry)
+                print(f"Transaction added for {person['Name']} from {person['Company']}")
+
+            except KeyError as e:
+                # Handle missing keys in the 'person' dictionary
+                print(f"Missing key in person data: {e}")
+
+            except Exception as e:
+                # Handle any other exceptions that might occur
+                print(f"Failed to add transaction: {e}")
+
+
+            
+            
+            
+            
             person["Timestamp"] = timestamp
+            person["Status"] = "Email Sent"
+            person["Priority"] = "No Priority"  # Reset priority after sending
 
     RecruiterDataFetch.update_status(people)
 
