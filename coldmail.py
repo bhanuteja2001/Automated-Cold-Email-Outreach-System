@@ -133,15 +133,17 @@ if __name__ == "__main__":
             try:
                 # Prepare the transaction entry
                 Transaction_entry = [
-                    timestamp,
-                    person["Company"],
-                    person["Name"],
-                    person["Email"],
-                    "Email Sent",
-                    person["Type"],
-                    person.get("Priority", "No Priority"),
-                    bcc_emails
-                ]
+                        timestamp,
+                        person["Company"],
+                        person["Name"],
+                        person["Email"],
+                        "Email Sent",
+                        person["Type"],
+                        person.get("Priority", "No Priority"),
+                        ", ".join(bcc_emails) if bcc_emails else ""  # Convert list to string
+                    ]
+
+                print(Transaction_entry)
                 
                 # Add the transaction
                 RecruiterDataFetch.add_transaction(Transaction_entry)

@@ -68,7 +68,7 @@ def process_queue():
 
             try:
 
-                timestamp = datetime.datetime.now(pytz.timezone('US/Central'))
+                timestamp = datetime.datetime.now(pytz.timezone('US/Central')).strftime("%Y-%m-%d %H:%M:%S %Z")
                 # Prepare the transaction entry
                 Transaction_entry = [
                     timestamp,
