@@ -162,46 +162,71 @@ def send_instant_email():
     server = smtplib.SMTP("smtp.gmail.com:587")
     server.ehlo()
     server.starttls()
-    server.login(os.environ["gmail_email"], os.environ["gmail_password"])
-
     try:
-        instant_mail = InstantColdMail(first_name, main_email, company, type_, server, dynamic_points, bcc=bcc_emails)
-        
-        cst = pytz.timezone('US/Central')
-        cst_time = datetime.datetime.now(cst)
-        timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
+        server.login(os.environ["gmail_email"], os.environ["gmail_password"])
+        print("Logged in successfully.")
 
-        Transaction_entry = [
-            timestamp,
-            company,
-            name,
-            email,
-            "Email Sent",
-            type_,
-            "Instant Send",
-            bcc_emails
-        ]
+        try:
+            # Replace with actual parameters
+            instant_mail = InstantColdMail(first_name, main_email, company, type_, server, dynamic_points, bcc=bcc_emails)
+            
+            cst = pytz.timezone('US/Central')
+            cst_time = datetime.datetime.now(cst)
+            timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
 
-        RecruiterDataFetch.add_transaction(Transaction_entry)
-        print(f"Transaction added for {name} from {company}")
-        
-        new_entry = [
-            "",  # ID will be auto-generated
-            name,
-            main_email,
-            company,
-            "Email Sent",
-            type_,
-            timestamp,
-            "No Priority"  # Assuming default priority
-        ]
-        RecruiterDataFetch.add_new_entry(new_entry)
-        print(f"Entry for {name} and {company} added to Google Sheet-1")
-        
-    except Exception as e:
-        print(f"Failed to send email: {e}")
+            # Log successful transaction
+            transaction_entry = [
+                timestamp,
+                company,
+                name,
+                main_email,
+                "Email Sent",
+                type_,
+                "Instant Send",
+                bcc_emails
+            ]
+            RecruiterDataFetch.add_transaction(transaction_entry)
+            print(f"Transaction added for {name} from {company}")
+
+            # Add new entry to Google Sheets
+            new_entry = [
+                "",  # ID will be auto-generated
+                name,
+                main_email,
+                company,
+                "Email Sent",
+                type_,
+                timestamp,
+                "No Priority"  # Assuming default priority
+            ]
+            RecruiterDataFetch.add_new_entry(new_entry)
+            print(f"Entry for {name} and {company} added to Google Sheet-1")
+
+        except Exception as email_error:
+            print(f"Failed to send email: {email_error}")
+
+            # Log failed transaction
+            cst = pytz.timezone('US/Central')
+            cst_time = datetime.datetime.now(cst)
+            timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
+
+            failure_entry = [
+                timestamp,
+                company,
+                name,
+                main_email,
+                "Email Failed",
+                type_,
+                "Instant Send",
+                bcc_emails,
+                str(email_error)  # Include error message
+            ]
+            RecruiterDataFetch.add_transaction(failure_entry)
+            print(f"Failure transaction logged for {name} from {company}")
+
     finally:
         server.quit()
+        print("SMTP server connection closed.")
 
 if __name__ == "__main__":
     send_instant_email()
