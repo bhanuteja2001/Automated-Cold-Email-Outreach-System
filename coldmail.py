@@ -139,7 +139,8 @@ if __name__ == "__main__":
                     person["Email"],
                     "Email Sent",
                     person["Type"],
-                    person.get("Priority", "No Priority")
+                    person.get("Priority", "No Priority"),
+                    bcc_emails
                 ]
                 
                 # Add the transaction

@@ -72,5 +72,5 @@ class RecruiterDataFetch:
     @staticmethod
     def add_transaction(Transaction):
         sheet = client.open("RecruiterEmailList").worksheet("Sheet3")
-        #new_row = [date, company, name, email, status, title, priority]
+        #new_row = [date, company, name, email, status, title, priority, bcc_emails]
         sheet.append_row(Transaction)

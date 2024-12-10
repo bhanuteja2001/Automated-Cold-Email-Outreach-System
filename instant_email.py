@@ -178,7 +178,8 @@ def send_instant_email():
             email,
             "Email Sent",
             type_,
-            "Instant Send"
+            "Instant Send",
+            bcc_emails
         ]
 
         RecruiterDataFetch.add_transaction(Transaction_entry)
