@@ -65,6 +65,34 @@ def process_queue():
                 "Priority": "No Priority",
                 "Timestamp": datetime.datetime.now(pytz.timezone('US/Central')).strftime("%Y-%m-%d %H:%M:%S %Z")
             })
+
+            try:
+
+                timestamp = datetime.datetime.now(pytz.timezone('US/Central'))
+                # Prepare the transaction entry
+                Transaction_entry = [
+                    timestamp,
+                    email[3],
+                    email[1],
+                    email[2],
+                    "Email Sent",
+                    email[5],
+                    email[7]
+                ]
+                
+                # Add the transaction
+                RecruiterDataFetch.add_transaction(Transaction_entry)
+                print(f"Transaction added for {email[1]} from {email[3]}")
+
+            except KeyError as e:
+                # Handle missing keys in the 'person' dictionary
+                print(f"Missing key in person data: {e}")
+
+            except Exception as e:
+                # Handle any other exceptions that might occur
+                print(f"Failed to add transaction: {e}")
+
+
             
             print(f"Email sent to {email[2]} and status updated.")
             time.sleep(30)  # 30-second delay between emails
