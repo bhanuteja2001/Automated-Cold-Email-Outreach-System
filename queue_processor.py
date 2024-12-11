@@ -51,7 +51,7 @@ def process_queue():
     server.starttls()
     server.login(os.environ["gmail_email"], os.environ["gmail_password"])
 
-    max_emails = int(os.environ.get("MAX_EMAILS_PER_RUN", 3))
+    max_emails = int(os.environ.get("MAX_EMAILS_PER_RUN", 10))
     emails_to_send = prioritized_emails[:max_emails]
 
     for email in emails_to_send:
