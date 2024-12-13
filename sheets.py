@@ -16,6 +16,13 @@ client = gspread.authorize(creds)
 
 class RecruiterDataFetch:
     @staticmethod
+    def get_all_records_by_company(company_name, designation):
+        sheet = client.open("RecruiterEmailList").sheet1
+        python_sheet = sheet.get_values("A:H")
+        filtered_records = [row for row in python_sheet[1:] if row[0] and row[3] == str(company_name) and row[5] == str(designation)]
+        return filtered_records
+    
+    @staticmethod
     def recruiter_all_records():
         sheet = client.open("RecruiterEmailList").sheet1
         python_sheet = sheet.get_values("A:H")
@@ -74,3 +81,13 @@ class RecruiterDataFetch:
         sheet = client.open("RecruiterEmailList").worksheet("Sheet3")
         #new_row = [date, company, name, email, status, title, priority, bcc_emails]
         sheet.append_row(Transaction)
+
+    @staticmethod
+    def update_email_status_instant(email_data):
+        sheet = client.open("RecruiterEmailList").sheet1
+        cell = sheet.find(email_data[0])
+        if cell:
+            row = cell.row
+            sheet.update_cell(row, 5, email_data[4])  # E column for Status
+            sheet.update_cell(row, 7, email_data[6])  # G column for Timestamp
+            sheet.update_cell(row, 8, email_data[7])  # H column for Priority
