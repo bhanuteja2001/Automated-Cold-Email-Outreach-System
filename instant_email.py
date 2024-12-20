@@ -51,7 +51,7 @@ def get_yes_no_input(prompt):
             print("Invalid input. Please enter 1 or 2.")
 
 class InstantColdMail:
-    def __init__(self, Name, Email, Company, Type, server, dynamic_points, bcc=None):
+    def __init__(self, Name, Email, Company, Type, server, dynamic_points, role, bcc=None):
         self.server = server
         self.bcc = bcc if isinstance(bcc, list) else [bcc] if bcc else []
 
@@ -66,10 +66,10 @@ class InstantColdMail:
         points_html = "\n".join([f"<li>{point}</li>" for point in dynamic_points])
         
         # Replace placeholders in the template
-        content = content.format(Name=Name, Company=Company, DynamicPoints=points_html)
+        content = content.format(Name=Name, Company=Company, DynamicPoints=points_html, role=role)
         
         # Set subject and resume file based on Type
-        subject, resume_file = self.get_subject_and_resume(Type, Company)
+        subject, resume_file = self.get_subject_and_resume(Type, Company, role)
 
         # Create the email message
         self.FROM = os.environ["gmail_email"]
@@ -93,22 +93,22 @@ class InstantColdMail:
             "DE_Manager": "Content/manager_DE.html",
             "Director DE": "Content/director_DE.html",
             "DS_Manager": "Content/manager_DS.html",
-            "Recruiter": "Content/Recruiter.html"
+            "Recruiter": "Content/Recruiter2.html"
         }
         return template_map.get(Type, "Content/default_template.html")
 
-    def get_subject_and_resume(self, Type, Company):
+    def get_subject_and_resume(self, Type, Company, role):
         if Type == "DE_Manager" or Type == "Director DE":
-            subject = f"Info on Data Engineering opportunities at {Company}"
+            subject = f"Expressing Interest for {role} at {Company} - Bhanu Kurakula"
             resume_file = "Resumes/Bhanu_Kurakula_DE_Resume.pdf"
         elif Type == "DS_Manager":
-            subject = f"Info on Data Science opportunities at {Company}"
+            subject = f"Expressing Interest for {role} at {Company} - Bhanu Kurakula"
             resume_file = "Resumes/Bhanu_DS_Resume.pdf"
         elif Type == "Recruiter":
-            subject = f"Inquiry About Full-Time Opportunities at {Company}"
+            subject = f"Expressing Interest for {role} at {Company} - Bhanu Kurakula"
             resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
         else:
-            subject = f"Inquiry about opportunities at {Company}"
+            subject = f"Expressing Interest for {role} at {Company} - Bhanu Kurakula"
             resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
         return subject, resume_file
 
@@ -131,6 +131,7 @@ def send_instant_email():
     email = get_input("Enter Email: ")
     company = get_input("Enter Company Name: ")
     type_ = get_type()
+    role = get_input('Enter the title you are applying for with the jobid if present!')
 
     use_bcc = get_yes_no_input("Do you want to use BCC?")
 
@@ -168,7 +169,7 @@ def send_instant_email():
 
         try:
             # Replace with actual parameters
-            instant_mail = InstantColdMail(first_name, main_email, company, type_, server, dynamic_points, bcc=bcc_emails)
+            instant_mail = InstantColdMail(first_name, main_email, company, type_, server, dynamic_points, role, bcc=bcc_emails)
             
             cst = pytz.timezone('US/Central')
             cst_time = datetime.datetime.now(cst)
@@ -181,7 +182,7 @@ def send_instant_email():
                 name,
                 main_email,
                 "Email Sent",
-                type_,
+                role,
                 "Instant Send",
                 bcc_emails
             ]
@@ -195,7 +196,7 @@ def send_instant_email():
                 main_email,
                 company,
                 "Email Sent",
-                type_,
+                role,
                 timestamp,
                 "No Priority"  # Assuming default priority
             ]
@@ -216,7 +217,7 @@ def send_instant_email():
                 name,
                 main_email,
                 "Email Failed",
-                type_,
+                role,
                 "Instant Send",
                 bcc_emails,
                 str(email_error)  # Include error message

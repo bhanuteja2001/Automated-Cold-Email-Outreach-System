@@ -13,6 +13,7 @@ import time
 def send_group_instant_email():
     company_name = instant_email.get_input("Enter the company name: ")
     designation = instant_email.get_type()
+    role = instant_email.get_input("Enter the title you are applying for with the jobid if present!")
 
     filtered_records = RecruiterDataFetch.get_all_records_by_company(company_name, designation)
     
@@ -54,7 +55,7 @@ def send_group_instant_email():
                 
                     try:
                         # Replace with actual parameters
-                        instant_mail = instant_email.InstantColdMail(first_name, main_email, company, designation, server, dynamic_points, bcc=bcc_emails)
+                        instant_mail = instant_email.InstantColdMail(first_name, main_email, company, designation, server, dynamic_points, role, bcc=bcc_emails)
                         
                         cst = pytz.timezone('US/Central')
                         cst_time = datetime.datetime.now(cst)
@@ -67,7 +68,7 @@ def send_group_instant_email():
                             person[1],
                             main_email,
                             "Email Sent",
-                            type_,
+                            role,
                             "Instant Group Send",
                             bcc_emails
                         ]
@@ -98,7 +99,7 @@ def send_group_instant_email():
                             person[1],
                             main_email,
                             "Email Failed",
-                            designation,
+                            role,
                             "Instant Group Send",
                             bcc_emails,
                             str(email_error)  # Include error message
