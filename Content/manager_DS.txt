@@ -20,12 +20,11 @@
             <li>Started my Data Science Journey right from my sophomore year of undergrad.</li>
             <li>Extensive experience across diverse industries including <b>BFS,  AgriTech, SaaS, and EdTech</b> through various internships  and full-time.</li>
             <li><b>Experience working with end-to-end projects</b> involving Data Engineering, Data Science and MLOps.</li>
-            <li>Published two papers involving CNNs and Image data.</li>
         </ol>
 
     <p>
         I'm looking for opportunities to grow in the field of data science, and {Company} seems like 
-        an ideal place to do that. If you have any openings that might fit my background, I'd be really 
+        an ideal place to do that. If you have any opportunities that might fit my background, I'd be really 
         excited to hear about them.
     </p>
 
@@ -47,12 +46,7 @@
     217-926-2758<br>
     <a href="mailto:bhanutk2@illinois.edu">bhanutk2@illinois.edu</a></p>
 
-    <p>
-        
-        <img src="https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Solutions-Architect-Associate_badge.3419559c682629072f1eb968d59dea0741772c0f.png" alt="AWS Certified Solutions Architect - Associate" style="width: 80px; height: 80px; margin-right: 5px; vertical-align: middle;">
-        <img src="https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Machine-Learning-Specialty_badge.e5d66b56552bbf046f905bacaecef6dad0ae7180.png" alt="AWS Certified Machine Learning - Specialty" style="width: 80px; height: 80px; vertical-align: middle;">
-
-    </p>
+  
 
 
 </body>

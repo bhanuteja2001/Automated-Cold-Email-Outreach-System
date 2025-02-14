@@ -88,6 +88,9 @@ class InstantColdMail:
         self.attach_resume(resume_file)
         self.send_mail()
 
+
+    #Email Templates
+    
     def get_template_file(self, Type):
         template_map = {
             "DE_Manager": "Content/manager_DE.html",

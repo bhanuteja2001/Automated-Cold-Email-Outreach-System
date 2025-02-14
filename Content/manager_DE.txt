@@ -16,16 +16,16 @@
 
     <p>A bit about me:</p>
         <ol>
-            <li><b>Certified AWS AWS-Certified-Solutions-Architect-Associate & AWS AWS-Certified-Machine-Learning-Specialty</b></li>
             <li>Experience designing and implementing robust data pipelines, with expertise in both <b>ETL and ELT</b>, ensuring efficient data processing and maintaining strong data quality standards.</li>
-            <li>Diverse industry experience, including <b>BFS, AgriTech, SaaS, and EdTech</b>, which has given me a broad perspective on data challenges across different domains.</li>
-            <li>Hands-on experience in production environments with tools like <b>Databricks, Snowflake, AWS, dbt, Apache Airflow and Alteryx</b>.</li>
+            <li>Diverse industry experience, including <b>BFS, AgTech, SaaS, and EdTech</b>, which has given me a broad perspective on data challenges across different domains.</li>
+            <li>Hands-on experience in production environments with tools like <b>Databricks, Snowflake, AWS, Airflow and Alteryx</b>.</li>
+            <li><b>Certified AWS AWS-Certified-Solutions-Architect-Associate & AWS AWS-Certified-Machine-Learning-Specialty</b></li>
             <li>Ability to <b>automate/reduce manual effort using IaC (CloudFormation, Terraform)</b> and other best devops practices.</li>
         </ol>
 
     <p>
         I'm looking for opportunities to grow as a data engineer, and {Company} stands out to me as an ideal place to grow. 
-        If you have any openings that might fit my background (now or in the future), I'd be really 
+        If you have any opportunities that might fit my background (now or in the future), I'd be really 
         excited to hear about them.
     </p>
 
@@ -47,12 +47,7 @@
     217-926-2758<br>
     <a href="mailto:bhanutk2@illinois.edu">bhanutk2@illinois.edu</a></p>
 
-    <p>
-        
-        <img src="https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Solutions-Architect-Associate_badge.3419559c682629072f1eb968d59dea0741772c0f.png" alt="AWS Certified Solutions Architect - Associate" style="width: 80px; height: 80px; margin-right: 5px; vertical-align: middle;">
-        <img src="https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Machine-Learning-Specialty_badge.e5d66b56552bbf046f905bacaecef6dad0ae7180.png" alt="AWS Certified Machine Learning - Specialty" style="width: 80px; height: 80px; vertical-align: middle;">
 
-    </p>
 
 
 </body>
