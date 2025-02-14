@@ -100,16 +100,16 @@ class InstantColdMail:
     def get_subject_and_resume(self, Type, Company, role):
         if Type == "DE_Manager" or Type == "Director DE":
             subject = f"Expressing Interest in {role} position at {Company} | Bhanu Kurakula"
-            resume_file = "Resumes/Bhanu_Kurakula_DE_Resume.pdf"
+            resume_file = "Resumes/DE/Bhanu_Kurakula_Resume.pdf"
         elif Type == "DS_Manager":
             subject = f"Expressing Interest in {role} position at {Company} | Bhanu Kurakula"
-            resume_file = "Resumes/Bhanu_DS_Resume.pdf"
+            resume_file = "Resumes/DS/Bhanu_Kurakula_Resume.pdf"
         elif Type == "Recruiter":
             subject = f"Expressing Interest in {role} position at {Company} | Bhanu Kurakula"
-            resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
+            resume_file = "Resumes/Recruiter/Bhanu_Kurakula_Resume.pdf"
         else:
             subject = f"Expressing Interest in {role} position at {Company} | Bhanu Kurakula"
-            resume_file = "Resumes/Bhanu_Kurakula_Resume.pdf"
+            resume_file = "Resumes/Recruiter/Bhanu_Kurakula_Resume.pdf"
         return subject, resume_file
 
     def attach_resume(self, resume_file):
