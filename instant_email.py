@@ -15,7 +15,7 @@ def get_input(prompt, optional=False):
             return value
 
 def get_type():
-    types = ["DE_Manager", "Director DE", "DS_Manager", "Recruiter"]
+    types = ["DE_Manager", "Director DE", "DS_Manager", "Recruiter", "Team_Member"]
     print("Select the type:")
     for i, t in enumerate(types, 1):
         print(f"{i}. {t}")
@@ -96,7 +96,8 @@ class InstantColdMail:
             "DE_Manager": "Content/manager_DE.html",
             "Director DE": "Content/director_DE.html",
             "DS_Manager": "Content/manager_DS.html",
-            "Recruiter": "Content/Recruiter2.html"
+            "Recruiter": "Content/Recruiter2.html",
+            "Team_Member": "Content/Team_Member.html"
         }
         return template_map.get(Type, "Content/default_template.html")
 
@@ -107,6 +108,9 @@ class InstantColdMail:
         elif Type == "DS_Manager":
             subject = f"Expressing Interest in {role} position at {Company} | Bhanu Kurakula"
             resume_file = "Resumes/DS/Bhanu_Kurakula_Resume.pdf"
+        elif Type == "Team_Member":
+            subject = f"Expressing Interest in {role} position at {Company} | Bhanu Kurakula"
+            resume_file = "Resumes/DE/Bhanu_Kurakula_Resume.pdf"
         elif Type == "Recruiter":
             subject = f"Expressing Interest in {role} position at {Company} | Bhanu Kurakula"
             resume_file = "Resumes/Recruiter/Bhanu_Kurakula_Resume.pdf"

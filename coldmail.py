@@ -27,21 +27,29 @@ class ColdMail:
             with open("Content/manager_DE.txt", "r") as file:
                 content = file.read()
             content = content.format(Name=Name, Company=Company)
-            subject = f"Expressing Interest on Data opportunities at {Company}"
+            subject = f"Expressing Interest in Data opportunities at {Company}"
             resume_file = "Resumes/DE/Bhanu_Kurakula_Resume.pdf"
 
         elif Type == "DS_Manager":
             with open("Content/manager_DS.txt", "r") as file:
                 content = file.read()
             content = content.format(Name=Name, Company=Company)
-            subject = f"Expressing Interest on Data opportunities at {Company}"
+            subject = f"Expressing Interest in Data opportunities at {Company}"
             resume_file = "Resumes/DS/Bhanu_Kurakula_Resume.pdf"
         
+        elif Type == "Team_Member":
+            with open("Content/Team_Member.html", "r") as file:
+                content = file.read()
+            content = content.format(Name=Name, Company=Company)
+            subject = f"Expressing Interest in Data opportunities at {Company}"
+            resume_file = "Resumes/DE/Bhanu_Kurakula_Resume.pdf"
+
+
         elif Type == "Recruiter":
             with open("Content/Recruiter.html", "r") as file:
                 content = file.read()
             content = content.format(Name=Name, Company=Company)
-            subject = f"Expressing Interest on Data opportunities at {Company}"
+            subject = f"Expressing Interest in Data opportunities at {Company}"
             resume_file = "Resumes/Recruiter/Bhanu_Kurakula_Resume.pdf"
         
         else:
@@ -161,10 +169,6 @@ if __name__ == "__main__":
                 print(f"Failed to add transaction: {e}")
 
 
-            
-            
-            
-            
             person["Timestamp"] = timestamp
             person["Status"] = "Email Sent"
             person["Priority"] = "No Priority"  # Reset priority after sending

@@ -10,7 +10,7 @@
 
     <p>
     I'm Bhanu, and a grad student at the <b>University of Illinois at Urbana-Champaign (UIUC)</b>, pursuing <b>Master of Science in Information Management (May '25)</b>. 
-    Also, I’m currently an Advanced Analytics Intern at AGCO Corporation.
+    Also, I’m currently a Data Engineering Intern at AGCO Corporation.
     </p>
 
     <p>
@@ -34,7 +34,7 @@
     UIUC<br>
     217-926-2758<br>
     <a href="mailto:bhanutk2@illinois.edu">bhanutk2@illinois.edu</a></p>
-    <a href='https://sites.google.com/view/bhanukurakula/'>My Portfolio</a>.
+    <a href='https://sites.google.com/view/bhanukurakula/projects'>My Portfolio</a>.
 
 
 </body>

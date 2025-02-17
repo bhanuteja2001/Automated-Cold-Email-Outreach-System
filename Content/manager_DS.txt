@@ -31,7 +31,7 @@
     <p>
         I'm available for a <b>full-time position starting May 2025.</b>
         I've attached my resume, and you can also check out more of my work on my portfolio site: 
-        <a href='https://sites.google.com/view/bhanukurakula/'>My Portfolio</a>.
+        <a href='https://sites.google.com/view/bhanukurakula/projects'>My Portfolio</a>.
     </p>
 
     <p>
