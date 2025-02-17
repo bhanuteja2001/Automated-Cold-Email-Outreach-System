@@ -46,7 +46,7 @@ class ColdMail:
 
 
         elif Type == "Recruiter":
-            with open("Content/Recruiter.html", "r") as file:
+            with open("Content/Recruiter.txt", "r") as file:
                 content = file.read()
             content = content.format(Name=Name, Company=Company)
             subject = f"Expressing Interest in Data opportunities at {Company}"

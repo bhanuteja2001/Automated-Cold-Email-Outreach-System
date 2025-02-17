@@ -25,28 +25,25 @@
 
     <p>
         I'm looking for opportunities to grow as a data engineer, and {Company} stands out to me as an ideal place to grow. 
+    </p>
+    <p>
         If you have any opportunities that might fit my background (now or in the future), I'd be really 
         excited to hear about them.
     </p>
 
     <p>
         I'm available for a <b>full-time position starting May 2025.</b>
-        I've attached my resume, and you can also check out more of my work on my portfolio site: 
-        <a href='https://sites.google.com/view/bhanukurakula/projects'>My Portfolio</a>.
+        I've attached my resume, and you can also check out more of my work on my portfolio.
     </p>
 
     <p>
-        Looking forward to potentially chatting more about how I could contribute to {Company}!
+       Thank you so much for your time and consideration! Looking forward to hearing from you!
     </p>
 
-    <p>Best,<br>
+    <p>Best Regards,<br>
     Bhanu Kurakula<br>
-    Grad Student<br>
-    MS Information Management<br>
-    UIUC<br>
-    217-926-2758<br>
-    <a href="mailto:bhanutk2@illinois.edu">bhanutk2@illinois.edu</a></p>
-
+    <a href='http://linkedin.com/in/bhanukurakula/'>Linkedin</a> | <a href='https://sites.google.com/view/bhanukurakula/projects'>Portfolio</a>
+    </p>
 
 
 
