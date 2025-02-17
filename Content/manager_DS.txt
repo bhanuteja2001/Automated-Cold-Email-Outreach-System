@@ -25,10 +25,10 @@
     <p>
         I'm looking for opportunities to grow as a data engineer, and {Company} stands out to me as an ideal place to grow. 
     </p>
-    <p>
+    <p><b>
         If you have any opportunities that might fit my background (now or in the future), I'd be really 
         excited to hear about them.
-    </p>
+    </b></p>
 
     <p>
         I'm available for a <b>full-time position starting May 2025.</b>

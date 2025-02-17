@@ -15,7 +15,7 @@
 
     <p>
         I’m looking for opportunities to start my career in data, and {Company} seems like an ideal place for it. 
-        If you have any openings that might fit my background, I’d be really excited to hear about them.
+        <b>If you have any openings that might fit my background, I’d be really excited to hear about them.</b>
     </p>
 
     <p>
