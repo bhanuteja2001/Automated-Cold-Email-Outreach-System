@@ -91,3 +91,30 @@ class RecruiterDataFetch:
             sheet.update_cell(row, 5, email_data[4])  # E column for Status
             sheet.update_cell(row, 7, email_data[6])  # G column for Timestamp
             sheet.update_cell(row, 8, email_data[7])  # H column for Priority
+
+class SendsoonEmail:    
+    @staticmethod
+    def recruiter_all_records():
+        sheet = client.open("RecruiterEmailList").Sendsoon
+        python_sheet = sheet.get_values("A:K")
+        filtered_records = [row for row in python_sheet[1:] if row[4] != "Email Sent" and row[0]] 
+
+        pp = pprint.PrettyPrinter()
+        if filtered_records:
+            random_record = random.choice(filtered_records)
+            print("Selected a random record")
+            return random_record
+        return None
+
+    @staticmethod
+    def update_status(people):
+        sheet = client.open("RecruiterEmailList").Sendsoon
+
+        for person in people:
+            if person and "ID" in person:
+                id_to_update = person["ID"]
+                status = "Email Sent"
+                cell = sheet.find(str(id_to_update))
+                if cell:
+                    sheet.update_cell(cell.row, 5, status)  # E column for Status
+                  
