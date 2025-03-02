@@ -3,7 +3,9 @@ import os
 import json
 import datetime
 import pytz
+import requests
 from bcc_handler import handle_bcc
+from urllib.parse import urlparse, parse_qs
 from jsonify import RecruiterDataProcessor_SendSoon
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -49,10 +51,18 @@ class Sendsoon:
             print(f"Unknown Position: {Position}. Email will not be sent.")
             return
 
-        # Check if the resume file exists
-        if not os.path.exists(resume_file):
-            print(f"Resume file not found: {resume_file}. Email will not be sent.")
-            return
+        # Check if Resume_URL is provided
+        if self.Resume_URL:
+            # Download the Google Doc and use it as the resume file
+            resume_file = self.download_doc(self.Resume_URL)
+            if not resume_file:
+                print("Failed to download the resume from the provided URL. Using default resume.")
+                resume_file = "Resumes/DE/Bhanu_Kurakula_Resume.pdf"  # Fallback to default
+        else:
+            # Use the default resume file
+            if not os.path.exists(resume_file):
+                print(f"Resume file not found: {resume_file}. Email will not be sent.")
+                return
 
         # Read the template file and format the content
         try:
@@ -79,6 +89,43 @@ class Sendsoon:
         # Send the email
         self.send_mail()
 
+    def download_doc(self, Resume_URL):
+        # Extract doc_id
+        parsed_url = urlparse(Resume_URL)
+        path_segments = parsed_url.path.split('/')
+        
+        if 'd' in path_segments:
+            doc_id_index = path_segments.index('d') + 1
+            if doc_id_index < len(path_segments):
+                doc_id = path_segments[doc_id_index]
+            else:
+                print("Invalid Google Docs URL.")
+                return None
+        else:
+            query_params = parse_qs(parsed_url.query)
+            if 'id' in query_params:
+                doc_id = query_params['id'][0]
+            else:
+                print("Invalid Google Docs URL.")
+                return None
+
+        # Construct the export URL
+        export_url = f"https://docs.google.com/document/d/{doc_id}/export?format=pdf"
+        
+        # Send a GET request to download the file
+        response = requests.get(export_url)
+        output_filename = 'Bhanu_Kurakula_Resume.pdf'
+        
+        # Check if the request was successful
+        if response.status_code == 200:
+            with open(output_filename, 'wb') as f:
+                f.write(response.content)
+            print(f"Downloaded {output_filename}")
+            return output_filename
+        else:
+            print(f"Failed to download. Status code: {response.status_code}")
+            return None
+    
     def attach_resume(self, resume_file):
         try:
             with open(resume_file, "rb") as resume:
