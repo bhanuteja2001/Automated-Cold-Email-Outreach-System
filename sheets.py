@@ -115,6 +115,11 @@ class SendsoonEmail:
                 id_to_update = person["ID"]
                 status = "Email Sent"
                 cell = sheet.find(str(id_to_update))
+                cst = pytz.timezone('US/Central')
+                cst_time = datetime.datetime.now(cst)
+                timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
+
                 if cell:
                     sheet.update_cell(cell.row, 5, status)  # E column for Status
+                    sheet.update_cell(cell.row, 7, timestamp)  # G column for Timestamp
                   
