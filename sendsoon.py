@@ -204,7 +204,7 @@ if __name__ == "__main__":
                         person["Name"],
                         person["Email"],
                         "Email Sent",
-                        person["Type"],
+                        person["Position"],
                         "sendsoon",
                         ", ".join(bcc_emails) if bcc_emails else ""  # Convert list to string
                     ]
