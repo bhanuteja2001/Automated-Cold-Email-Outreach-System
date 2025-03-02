@@ -95,7 +95,7 @@ class RecruiterDataFetch:
 class SendsoonEmail:    
     @staticmethod
     def recruiter_all_records():
-        sheet = client.open("RecruiterEmailList").Sendsoon
+        sheet = client.open("RecruiterEmailList").worksheet("Sendsoon")
         python_sheet = sheet.get_values("A:K")
         filtered_records = [row for row in python_sheet[1:] if row[4] != "Email Sent" and row[0]] 
 
@@ -108,7 +108,7 @@ class SendsoonEmail:
 
     @staticmethod
     def update_status(people):
-        sheet = client.open("RecruiterEmailList").Sendsoon
+        sheet = client.open("RecruiterEmailList").worksheet("Sendsoon")
 
         for person in people:
             if person and "ID" in person:

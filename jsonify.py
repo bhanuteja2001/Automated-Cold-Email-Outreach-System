@@ -40,4 +40,3 @@ class RecruiterDataProcessor_SendSoon:
     def get_processed_json(cls):
         processor = cls()
         return processor.get_json_data()
-
