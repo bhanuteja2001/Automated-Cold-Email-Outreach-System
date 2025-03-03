@@ -26,13 +26,15 @@ class Sendsoon:
         subject = ""
         content = "."
 
+        ### IF DYNAMIC POINTS ARE NOT PRESENT, DEFAULT IS NOT ENABLED YET!
+        ## Need to draft perfect emails for all roles, for now only recruiter is good!
         def get_template_file(Position):
             template_map = {
-                "DE_Manager": "Content/manager_DE.html",
-                "Director DE": "Content/director_DE.html",
-                "DS_Manager": "Content/manager_DS.html",
-                "Recruiter": "Content/Recruiter2.html",
-                "Team_Member": "Content/Team_Member.html"
+                "DE_Manager": "Content/sendsoon/recruiter.html",
+                "Director DE": "Content/sendsoon/recruiter.html",
+                "DS_Manager": "Content/sendsoon/recruiter.html",
+                "Recruiter": "Content/sendsoon/recruiter.html",
+                "Team_Member": "Content/sendsoon/recruiter.html"
             }
             return template_map.get(Position, "Content/default_template.html")
         
