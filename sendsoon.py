@@ -30,11 +30,11 @@ class Sendsoon:
         ## Need to draft perfect emails for all roles, for now only recruiter is good!
         def get_template_file(Position):
             template_map = {
-                "DE_Manager": "Content/sendsoon/recruiter.html",
-                "Director DE": "Content/sendsoon/recruiter.html",
-                "DS_Manager": "Content/sendsoon/recruiter.html",
+                "DE_Manager": "Content/sendsoon/DE_Manager.html",
+                "Director DE": "Content/sendsoon/Director_DE_Manager.html",
+                "DS_Manager": "Content/sendsoon/DE_Manager.html",
                 "Recruiter": "Content/sendsoon/recruiter.html",
-                "Team_Member": "Content/sendsoon/recruiter.html"
+                "Team_Member": "Content/sendsoon/team_member.html"
             }
             return template_map.get(Position, "Content/default_template.html")
         
