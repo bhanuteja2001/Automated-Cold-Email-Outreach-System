@@ -5,26 +5,159 @@ on:
   schedule:
     # Monday
     - cron: '0 11 * * 1'    # 5:00 AM CST
-    - cron: '30 11 * * 1'   # 5:30 AM CST
+    - cron: '12 11 * * 1'   # 5:12 AM CST
+    - cron: '24 11 * * 1'   # 5:24 AM CST
+    - cron: '36 11 * * 1'   # 5:36 AM CST
+    - cron: '48 11 * * 1'   # 5:48 AM CST
     - cron: '0 12 * * 1'    # 6:00 AM CST
-    - cron: '30 12 * * 1'   # 6:30 AM CST
+    - cron: '12 12 * * 1'   # 6:12 AM CST
+    - cron: '24 12 * * 1'   # 6:24 AM CST
+    - cron: '36 12 * * 1'   # 6:36 AM CST
+    - cron: '48 12 * * 1'   # 6:48 AM CST
     - cron: '0 13 * * 1'    # 7:00 AM CST
-    - cron: '30 13 * * 1'   # 7:30 AM CST
-    # Tuesday, Wednesday, Thursday
-    - cron: '0 13 * * 2-4'  # 7:00 AM CST
-    - cron: '30 13 * * 2-4' # 7:30 AM CST
-    - cron: '0 14 * * 2-4'  # 8:00 AM CST
-    - cron: '30 14 * * 2-4' # 8:30 AM CST
-    - cron: '0 15 * * 2-4'  # 9:00 AM CST
-    - cron: '30 15 * * 2-4' # 9:30 AM CST
-    - cron: '0 16 * * 2-4'  # 10:00 AM CST
-    - cron: '30 16 * * 2-4' # 10:30 AM CST
-    # Friday
+    - cron: '12 13 * * 1'   # 7:12 AM CST
+    - cron: '24 13 * * 1'   # 7:24 AM CST
+    - cron: '36 13 * * 1'   # 7:36 AM CST
+    - cron: '48 13 * * 1'   # 7:48 AM CST
+    - cron: '0 14 * * 1'    # 8:00 AM CST
+    - cron: '12 14 * * 1'   # 8:12 AM CST
+    - cron: '24 14 * * 1'   # 8:24 AM CST
+    - cron: '36 14 * * 1'   # 8:36 AM CST
+    - cron: '48 14 * * 1'   # 8:48 AM CST
+    - cron: '0 15 * * 1'    # 9:00 AM CST
+    - cron: '12 15 * * 1'   # 9:12 AM CST
+    - cron: '24 15 * * 1'   # 9:24 AM CST
+    - cron: '36 15 * * 1'   # 9:36 AM CST
+    - cron: '48 15 * * 1'   # 9:48 AM CST
+    - cron: '0 16 * * 1'    # 10:00 AM CST
+    - cron: '12 16 * * 1'   # 10:12 AM CST
+    - cron: '24 16 * * 1'   # 10:24 AM CST
+    - cron: '36 16 * * 1'   # 10:36 AM CST
+    - cron: '48 16 * * 1'   # 10:48 AM CST
+    # Tuesday
+    - cron: '0 11 * * 2'    # 5:00 AM CST
+    - cron: '12 11 * * 2'   # 5:12 AM CST
+    - cron: '24 11 * * 2'   # 5:24 AM CST
+    - cron: '36 11 * * 2'   # 5:36 AM CST
+    - cron: '48 11 * * 2'   # 5:48 AM CST
+    - cron: '0 12 * * 2'    # 6:00 AM CST
+    - cron: '12 12 * * 2'   # 6:12 AM CST
+    - cron: '24 12 * * 2'   # 6:24 AM CST
+    - cron: '36 12 * * 2'   # 6:36 AM CST
+    - cron: '48 12 * * 2'   # 6:48 AM CST
+    - cron: '0 13 * * 2'    # 7:00 AM CST
+    - cron: '12 13 * * 2'   # 7:12 AM CST
+    - cron: '24 13 * * 2'   # 7:24 AM CST
+    - cron: '36 13 * * 2'   # 7:36 AM CST
+    - cron: '48 13 * * 2'   # 7:48 AM CST
+    - cron: '0 14 * * 2'    # 8:00 AM CST
+    - cron: '12 14 * * 2'   # 8:12 AM CST
+    - cron: '24 14 * * 2'   # 8:24 AM CST
+    - cron: '36 14 * * 2'   # 8:36 AM CST
+    - cron: '48 14 * * 2'   # 8:48 AM CST
+    - cron: '0 15 * * 2'    # 9:00 AM CST
+    - cron: '12 15 * * 2'   # 9:12 AM CST
+    - cron: '24 15 * * 2'   # 9:24 AM CST
+    - cron: '36 15 * * 2'   # 9:36 AM CST
+    - cron: '48 15 * * 2'   # 9:48 AM CST
+    - cron: '0 16 * * 2'    # 10:00 AM CST
+    - cron: '12 16 * * 2'   # 10:12 AM CST
+    - cron: '24 16 * * 2'   # 10:24 AM CST
+    - cron: '36 16 * * 2'   # 10:36 AM CST
+    - cron: '48 16 * * 2'   # 10:48 AM CST
+    # Wednesday
+    - cron: '0 11 * * 3'    # 5:00 AM CST
+    - cron: '12 11 * * 3'   # 5:12 AM CST
+    - cron: '24 11 * * 3'   # 5:24 AM CST
+    - cron: '36 11 * * 3'   # 5:36 AM CST
+    - cron: '48 11 * * 3'   # 5:48 AM CST
+    - cron: '0 12 * * 3'    # 6:00 AM CST
+    - cron: '12 12 * * 3'   # 6:12 AM CST
+    - cron: '24 12 * * 3'   # 6:24 AM CST
+    - cron: '36 12 * * 3'   # 6:36 AM CST
+    - cron: '48 12 * * 3'   # 6:48 AM CST
+    - cron: '0 13 * * 3'    # 7:00 AM CST
+    - cron: '12 13 * * 3'   # 7:12 AM CST
+    - cron: '24 13 * * 3'   # 7:24 AM CST
+    - cron: '36 13 * * 3'   # 7:36 AM CST
+    - cron: '48 13 * * 3'   # 7:48 AM CST
+    - cron: '0 14 * * 3'    # 8:00 AM CST
+    - cron: '12 14 * * 3'   # 8:12 AM CST
+    - cron: '24 14 * * 3'   # 8:24 AM CST
+    - cron: '36 14 * * 3'   # 8:36 AM CST
+    - cron: '48 14 * * 3'   # 8:48 AM CST
+    - cron: '0 15 * * 3'    # 9:00 AM CST
+    - cron: '12 15 * * 3'   # 9:12 AM CST
+    - cron: '24 15 * * 3'   # 9:24 AM CST
+    - cron: '36 15 * * 3'   # 9:36 AM CST
+    - cron: '48 15 * * 3'   # 9:48 AM CST
+    - cron: '0 16 * * 3'    # 10:00 AM CST
+    - cron: '12 16 * * 3'   # 10:12 AM CST
+    - cron: '24 16 * * 3'   # 10:24 AM CST
+    - cron: '36 16 * * 3'   # 10:36 AM CST
+    - cron: '48 16 * * 3'   # 10:48 AM CST
+    #Thurday
+    - cron: '0 11 * * 4'    # 5:00 AM CST
+    - cron: '12 11 * * 4'   # 5:12 AM CST
+    - cron: '24 11 * * 4'   # 5:24 AM CST
+    - cron: '36 11 * * 4'   # 5:36 AM CST
+    - cron: '48 11 * * 4'   # 5:48 AM CST
+    - cron: '0 12 * * 4'    # 6:00 AM CST
+    - cron: '12 12 * * 4'   # 6:12 AM CST
+    - cron: '24 12 * * 4'   # 6:24 AM CST
+    - cron: '36 12 * * 4'   # 6:36 AM CST
+    - cron: '48 12 * * 4'   # 6:48 AM CST
+    - cron: '0 13 * * 4'    # 7:00 AM CST
+    - cron: '12 13 * * 4'   # 7:12 AM CST
+    - cron: '24 13 * * 4'   # 7:24 AM CST
+    - cron: '36 13 * * 4'   # 7:36 AM CST
+    - cron: '48 13 * * 4'   # 7:48 AM CST
+    - cron: '0 14 * * 4'    # 8:00 AM CST
+    - cron: '12 14 * * 4'   # 8:12 AM CST
+    - cron: '24 14 * * 4'   # 8:24 AM CST
+    - cron: '36 14 * * 4'   # 8:36 AM CST
+    - cron: '48 14 * * 4'   # 8:48 AM CST
+    - cron: '0 15 * * 4'    # 9:00 AM CST
+    - cron: '12 15 * * 4'   # 9:12 AM CST
+    - cron: '24 15 * * 4'   # 9:24 AM CST
+    - cron: '36 15 * * 4'   # 9:36 AM CST
+    - cron: '48 15 * * 4'   # 9:48 AM CST
+    - cron: '0 16 * * 4'    # 10:00 AM CST
+    - cron: '12 16 * * 4'   # 10:12 AM CST
+    - cron: '24 16 * * 4'   # 10:24 AM CST
+    - cron: '36 16 * * 4'   # 10:36 AM CST
+    - cron: '48 16 * * 4'   # 10:48 AM CST
+    #Friday
+    - cron: '0 11 * * 5'    # 5:00 AM CST
+    - cron: '12 11 * * 5'   # 5:12 AM CST
+    - cron: '24 11 * * 5'   # 5:24 AM CST
+    - cron: '36 11 * * 5'   # 5:36 AM CST
+    - cron: '48 11 * * 5'   # 5:48 AM CST
     - cron: '0 12 * * 5'    # 6:00 AM CST
-    - cron: '30 12 * * 5'   # 6:30 AM CST
+    - cron: '12 12 * * 5'   # 6:12 AM CST
+    - cron: '24 12 * * 5'   # 6:24 AM CST
+    - cron: '36 12 * * 5'   # 6:36 AM CST
+    - cron: '48 12 * * 5'   # 6:48 AM CST
     - cron: '0 13 * * 5'    # 7:00 AM CST
-    - cron: '30 13 * * 5'   # 7:30 AM CST
-
+    - cron: '12 13 * * 5'   # 7:12 AM CST
+    - cron: '24 13 * * 5'   # 7:24 AM CST
+    - cron: '36 13 * * 5'   # 7:36 AM CST
+    - cron: '48 13 * * 5'   # 7:48 AM CST
+    - cron: '0 14 * * 5'    # 8:00 AM CST
+    - cron: '12 14 * * 5'   # 8:12 AM CST
+    - cron: '24 14 * * 5'   # 8:24 AM CST
+    - cron: '36 14 * * 5'   # 8:36 AM CST
+    - cron: '48 14 * * 5'   # 8:48 AM CST
+    - cron: '0 15 * * 5'    # 9:00 AM CST
+    - cron: '12 15 * * 5'   # 9:12 AM CST
+    - cron: '24 15 * * 5'   # 9:24 AM CST
+    - cron: '36 15 * * 5'   # 9:36 AM CST
+    - cron: '48 15 * * 5'   # 9:48 AM CST
+    - cron: '0 16 * * 5'    # 10:00 AM CST
+    - cron: '12 16 * * 5'   # 10:12 AM CST
+    - cron: '24 16 * * 5'   # 10:24 AM CST
+    - cron: '36 16 * * 5'   # 10:36 AM CST
+    - cron: '48 16 * * 5'   # 10:48 AM CST
 
 jobs:
   run-coldmail:
