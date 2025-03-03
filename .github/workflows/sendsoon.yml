@@ -1,4 +1,4 @@
-name: Schedule Coldmail Script
+name: Schedule sendsoon Script
 
 on:
   workflow_dispatch:
