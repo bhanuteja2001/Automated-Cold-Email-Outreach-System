@@ -96,8 +96,8 @@ class SendsoonEmail:
     @staticmethod
     def recruiter_all_records():
         sheet = client.open("RecruiterEmailList").worksheet("Sendsoon")
-        python_sheet = sheet.get_values("A:K")
-        filtered_records = [row for row in python_sheet[1:] if row[4] != "Email Sent" and row[0]] 
+        python_sheet = sheet.get_values("A:M")
+        filtered_records = [row for row in python_sheet[1:] if row[4] != "Email Sent" and row[0] and row[12] != 'Email Re-sent'] 
 
         pp = pprint.PrettyPrinter()
         if filtered_records:
@@ -105,6 +105,55 @@ class SendsoonEmail:
             print("Selected a random record")
             return random_record
         return None
+
+    def follow_up_email_all_records():
+        sheet = client.open("RecruiterEmailList").worksheet("Sendsoon")
+        python_sheet = sheet.get_values("A:M")
+        # Define CST timezone (UTC-6)
+        cst = datetime.timezone(datetime.timedelta(hours=-6))
+
+        def parse_timestamp(timestamp_str):
+            """
+            Parse a timestamp string into a datetime object.
+            Handles two formats:
+            1. "2025-03-03 05:32:12 CST"
+            2. "03/03/2025 14:16:57"
+            """
+            try:
+                # Try parsing the first format: "2025-03-03 05:32:12 CST"
+                return datetime.datetime.strptime(timestamp_str, "%Y-%m-%d %H:%M:%S %Z")
+            except ValueError:
+                try:
+                    # Try parsing the second format: "03/03/2025 14:16:57"
+                    return datetime.datetime.strptime(timestamp_str, "%m/%d/%Y %H:%M:%S")
+                except ValueError:
+                    # If neither format works, return None
+                    return None
+
+        # Filter records
+        filtered_records = [
+            row for row in python_sheet[1:]  # Skip the header row
+            if row[4] == "Email Sent"  # Check if "Email Sent" is in the 5th column
+            and row[0]  # Check if the first column is not empty
+            and row[12] == 'Email Re-sent'  # Check if the 13th column is not "Email Re-sent"
+            #and parse_timestamp(row[11])  # Ensure the timestamp is valid
+            and (datetime.datetime.now(cst) - parse_timestamp(row[11])) >= datetime.timedelta(days=7)  # Check if the timestamp is at least 7 days old
+        ]
+
+        # Pretty printer for debugging
+        pp = pprint.PrettyPrinter()
+
+        # Return a random record if filtered_records is not empty
+        if filtered_records:
+            random_record = random.choice(filtered_records)
+            print("Selected a random record:")
+            pp.pprint(random_record)
+            return random_record
+        else:
+            print("No records match the criteria.")
+            pp.pprint(random_record)
+            return None
+
 
     @staticmethod
     def update_status(people):
@@ -114,6 +163,7 @@ class SendsoonEmail:
             if person and "ID" in person:
                 id_to_update = person["ID"]
                 status = "Email Sent"
+                resend_status = 'Waiting'
                 cell = sheet.find(str(id_to_update))
                 cst = pytz.timezone('US/Central')
                 cst_time = datetime.datetime.now(cst)
@@ -122,4 +172,22 @@ class SendsoonEmail:
                 if cell:
                     sheet.update_cell(cell.row, 5, status)  # E column for Status
                     sheet.update_cell(cell.row, 7, timestamp)  # G column for Timestamp
-                  
+                    sheet.update_cell(cell.row, 12, resend_status) # M column for resend_status
+
+    @staticmethod
+    def update_resend_status(people):
+        sheet = client.open("RecruiterEmailList").worksheet("Sendsoon")
+
+        for person in people:
+            if person and "ID" in person:
+                id_to_update = person["ID"]
+                resend_status = 'Email Re-sent'
+                cell = sheet.find(str(id_to_update))
+                cst = pytz.timezone('US/Central')
+                cst_time = datetime.datetime.now(cst)
+                timestamp = cst_time.strftime("%Y-%m-%d %H:%M:%S %Z")
+
+                if cell:
+                    sheet.update_cell(cell.row, 11, timestamp)  # L column for Resend_Timestamp
+                    sheet.update_cell(cell.row, 12, resend_status) # M column for resend_status
+              
