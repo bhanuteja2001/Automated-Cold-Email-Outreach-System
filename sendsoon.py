@@ -11,6 +11,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 from sheets import RecruiterDataFetch, SendsoonEmail
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 class Sendsoon:
     def __init__(self, Name, Email, Company, Position, Job_position, Resume_URL, Dynamic_points, server, bcc=None):
@@ -157,7 +161,9 @@ if __name__ == "__main__":
     server = smtplib.SMTP("smtp.gmail.com:587")
     server.ehlo()
     server.starttls()
-    server.login(os.environ["gmail_email"], os.environ["gmail_password"])
+    email = os.environ["gmail_email"] # os.getenv("gmail_email")
+    pss = os.environ["gmail_password"] # os.getenv("gmail_password")
+    server.login(email, pss)
 
     processor = RecruiterDataProcessor_SendSoon()
     people = json.loads(processor.get_json_data())
