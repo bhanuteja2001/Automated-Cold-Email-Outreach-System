@@ -9,6 +9,9 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 from jsonify import RecruiterDataProcessor
 from sheets import RecruiterDataFetch
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class ColdMail:
     def __init__(self, Name, Email, Company, Type, server, bcc=None, priority=None):
@@ -100,7 +103,7 @@ if __name__ == "__main__":
     server = smtplib.SMTP("smtp.gmail.com:587")
     server.ehlo()
     server.starttls()
-    server.login(os.environ["gmail_email"], os.environ["gmail_password"])
+    server.login(os.getenv("gmail_email"), os.getenv("gmail_password")) ### resolve this to avoid os
 
     processor = RecruiterDataProcessor()
     people = json.loads(processor.get_json_data())
