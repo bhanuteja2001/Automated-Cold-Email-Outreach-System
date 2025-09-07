@@ -9,9 +9,9 @@
     <p>Hi {Name},</p>
 
     <p>
-        I'm Bhanu, a grad student (May '25) from <b>The University of Illinois at Urbana-Champaign (UIUC)</b> pursuing <b>Master of Science in
-        Information Management</b> and currently working as a <b>Data Engineering Intern</b> at <b>AGCO Corporation</b>. 
-        I'm reaching out because I'm really interested to be part of {Company}'s Data Team.
+        I'm Bhanu, a recent grad from <b>The University of Illinois at Urbana-Champaign (UIUC)</b> with a <b>Master of Science in
+        Information Management</b> and I have <b>over 2.5+ YoE in Data Engineering</b>. 
+        I'm reaching out because I'm really interested to be part of {Company}'s Data Engineering Team.
     </p>
 
     <p>A bit about me:</p>
@@ -28,13 +28,13 @@
     </p>
     <p>
     <b>
-        If you have any opportunities that might fit my background (now or in the future), I'd be really 
+        If you have any opportunities that might fit my background (now or in the future), I would be really 
         excited to hear about them.
     </b>
     </p>
 
     <p>
-        I'm available for a <b>full-time position starting May 2025.</b>
+        I'm available to join immediately.
         I've attached my resume, and you can also check out more of my work on my portfolio.
     </p>
 

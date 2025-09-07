@@ -9,32 +9,44 @@
     <p>Hi {Name},</p>
 
     <p>
-    I'm Bhanu, and a grad student at the <b>University of Illinois at Urbana-Champaign (UIUC)</b>, pursuing <b>Master of Science in Information Management (May '25)</b>. 
-    Also, I’m currently a Data Engineering Intern at AGCO Corporation.
+        I'm Bhanu, a recent grad from <b>The University of Illinois at Urbana-Champaign (UIUC)</b> with a <b>Master of Science in
+        Information Management</b> and I have <b>over 2.5+ YoE in Data Engineering</b>. 
+        I'm reaching out because I'm really interested to be part of {Company}'s Data Team.
+    </p>
+
+    <p>A bit about me:</p>
+        <ol>
+            <li>Experience designing and implementing robust data pipelines, with expertise in both <b>ETL and ELT</b>, ensuring efficient data processing and maintaining strong data quality standards.</li>
+            <li>Diverse industry experience, including <b>BFS, AgTech, SaaS, and EdTech</b>, which has given me a broad perspective on data challenges across different domains.</li>
+            <li>Hands-on experience in production environment with tools like <b>Databricks, Snowflake, AWS, Airflow and Alteryx</b>.</li>
+            <li>Certified AWS AWS-Certified-Solutions-Architect-Associate & Databricks Data Engineering - Associate</li>
+            <li>Ability to <b>automate/reduce manual effort using IaC (CloudFormation, Terraform)</b> and other best devops practices.</li>
+        </ol>
+
+    <p>
+        I'm actively looking for opportunities and {Company} stands out to me as an ideal place to grow. 
+    </p>
+    <p>
+    <b>
+        If you have any opportunities that might fit my background (now or in the future), I would be really 
+        excited to hear about them.
+    </b>
     </p>
 
     <p>
-        I’m looking for opportunities to start my career in data, and {Company} seems like an ideal place for it. 
-        <b>If you have any openings that might fit my background, I’d be really excited to hear about them.</b>
+        I'm available to join immediately.
+        I've attached my resume, and you can also check out more of my work on my portfolio.
     </p>
 
     <p>
-       I am available for a <b>full-time position starting May 2025.</b>
+       Thank you so much for your time and consideration! Looking forward to hearing from you!
     </p>
 
-    <p>
-        Thank you so much for your valuable time. I have attached my resume for your reference, I look forward to hearing from you!
-    </p>
-
-
-    <p>Best,<br>
+    <p>Best Regards,<br>
     Bhanu Kurakula<br>
-    Grad Student<br>
-    MS Information Management<br>
-    UIUC<br>
-    217-926-2758<br>
-    <a href="mailto:bhanutk2@illinois.edu">bhanutk2@illinois.edu</a></p>
-    <a href='https://sites.google.com/view/bhanukurakula/projects'>My Portfolio</a>.
+    <a href='http://linkedin.com/in/bhanukurakula/'>Linkedin</a> | <a href='https://sites.google.com/view/bhanukurakula/projects'>Portfolio</a>
+    </p>
+
 
 
 </body>
