@@ -11,7 +11,15 @@
     <p>
         I'm Bhanu, a recent grad from <b>The University of Illinois at Urbana-Champaign (UIUC)</b> with a <b>Master of Science in
         Information Management</b> and I have <b>over 2.5+ YoE in Data Engineering</b>. 
-        I'm reaching out because I'm really interested to be part of {Company}'s Data Team.
+    </p>
+
+    <p>
+
+        I've submitted many applications for Data Engineer roles lately, and I'm reaching out because 
+        I'm genuinely eager for an opportunity to interview and join {Company}'s Data Engineering Team. 
+        I’m passionate about the kind of work data engineering teams at {Company} does and confident that this could be the next 
+        best step in my career.
+
     </p>
 
     <p>A bit about me:</p>
@@ -19,27 +27,17 @@
             <li>Experience designing and implementing robust data pipelines handling large volumes of data using both <b>ETL and ELT</b>, ensuring efficient data processing and maintaining rigorous data quality standards.</li>
             <li>Collaborated with both technical and non-technical stakeholders to develop robust <b>data models</b>, design intuitive <b>dashboards</b>, and define key business <b>metrics</b>.</li>
             <li>Diverse industry experience, including <b>Health, AgTech, Finance, and EdTech</b>, which has given me a broad perspective on data challenges across different sectors.</li>
-            <li>Hands-on experience shipping data products while working with tools like <b>Tableau, Databricks, Snowflake, AWS, Airflow and Alteryx</b>.</li>
+            <li>Hands-on experience shipping data products while working with tools like <b>Tableau, Hadoop, Databricks, Snowflake, AWS, Airflow and Alteryx</b>.</li>
             <li>Ability to <b>automate/reduce manual effort using IaC (CloudFormation, Terraform)</b> and other best devops practices.</li>
         </ol>
-
+        
     <p>
-        I'm actively looking for opportunities and {Company} stands out to me as an ideal place to grow. 
-    </p>
-    <p>
-    <b>
-        If you have any opportunities that might fit my background (now or in the future), I would be really 
-        excited to hear about them.
-    </b>
-    </p>
-
-    <p>
-        I'm available to join immediately.
+        <b>I'm available to join immediately.</b>
         I've attached my resume, and you can also check out more of my work on my portfolio.
     </p>
 
     <p>
-       Thank you so much for your time and consideration! Looking forward to hearing from you!
+       Thank you so much for your time and consideration. If you have any opportunities that match my background—or any advice to share—I’d really appreciate hearing from you!
     </p>
 
     <p>Best Regards,<br>

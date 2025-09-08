@@ -9,27 +9,33 @@
     <p>Hi {Name},</p>
 
     <p>
-        I'm Bhanu, a recent grad from <b>The University of Illinois at Urbana-Champaign (UIUC)</b> with a <b>Master of Science in
-        Information Management</b> and I have <b>over 2.5+ YoE in Data Engineering</b>. 
-        I'm reaching out because I'm really interested to be part of {Company}'s Data Engineering Team.
+        I'm Bhanu, I recently graduated from <b>The University of Illinois at Urbana-Champaign (UIUC)</b> with a <b>Master of Science in
+        Information Management</b> and I have <b>over 2.5+ YoE in Data Engineering</b>.
+    </p>
+
+    <p>
+
+        I saw that CVS has recently opened several Data Engineer positions, 
+        so I'm reaching out because I'm really hoping to find an opportunity to interview and contribute to {Company}'s Data Engineering Team. 
+        I've already applied to over 60 Data Engineer roles (all ones I’m genuinely qualified for), but for some reason, 
+        nothing seems to be working out. If you know of any openings on your team or could share some useful advice, 
+        I would really appreciate it. I strongly believe that {Company} will be the next best step in my career.
+
+
     </p>
 
     <p>A bit about me:</p>
         <ol>
-            <li>Experience <b>designing and implementing robust data pipelines</b> handling large volumes of data using both <b>ETL and ELT</b>, ensuring efficient data processing and maintaining rigorous data quality standards.</li>
+            <li>Experience <b>engineering robust data pipelines</b> handling large volumes of data using both <b>ETL and ELT</b>, ensuring efficient data processing and maintaining rigorous data quality standards.</li>
             <li><b>Collaborated with both technical and non-technical stakeholders</b> to develop robust <b>data models</b>, design intuitive <b>dashboards</b>, and define key business <b>metrics</b>.</li>
             <li>Diverse industry experience, including <b>Health, AgTech, Finance, and EdTech</b>, which has given me a broad perspective on data challenges across different sectors.</li>
-            <li>Hands-on experience shipping data products while working with tools like <b>Tableau, Databricks, Snowflake, AWS, Airflow and Alteryx</b>.</li>
-            <li>Ability to <b>automate/reduce manual effort using IaC (CloudFormation, Terraform)</b> and other best devops practices.</li>
+            <li>Hands-on experience shipping data products while working with like <b>Tableau, Hadoop, Databricks, Snowflake, AWS, Airflow and Alteryx</b>.</li>
         </ol>
 
     <p>
-        I'm looking for opportunities to grow as a data engineer, and {Company} stands out to me as an ideal place to grow. 
-    </p>
-    <p>
     <b>
-        If you have any opportunities that might fit my background (now or in the future), I would be really 
-        excited to hear about them.
+        I'm truly interested in joining {Company} and believe I could add value while continuing to learn and grow. 
+        If there's anything available that matches my background—or even if you just have some advice, I would be grateful to hear from you.
     </b>
     </p>
 
@@ -39,7 +45,7 @@
     </p>
 
     <p>
-       Thank you so much for your time and consideration! Looking forward to hearing from you!
+       Thank you so much for your time and consideration. Looking forward to any guidance or opportunities you can share!
     </p>
 
     <p>Best Regards,<br>
