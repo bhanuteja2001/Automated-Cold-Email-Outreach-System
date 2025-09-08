@@ -49,7 +49,10 @@ def process_queue():
     server = smtplib.SMTP("smtp.gmail.com:587")
     server.ehlo()
     server.starttls()
-    server.login(os.environ["gmail_email"], os.environ["gmail_password"])
+    email = os.environ["gmail_email"] # os.getenv("gmail_email")
+    pss = os.environ["gmail_password"] # os.getenv("gmail_password")
+    server.login(email, pss)
+    #server.login(os.environ["gmail_email"], os.environ["gmail_password"])
 
     max_emails = int(os.environ.get("MAX_EMAILS_PER_RUN", 10))
     emails_to_send = prioritized_emails[:max_emails]
