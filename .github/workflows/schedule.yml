@@ -3,6 +3,20 @@ name: Schedule Coldmail Script
 on:
   workflow_dispatch:
   schedule:
+    - cron: '30 12 * * 1'   # 7:30 AM CST
+    - cron: '35 12 * * 1'   # 7:35 AM CST
+    - cron: '40 12 * * 1'   # 7:40 AM CST
+    - cron: '45 12 * * 1'   # 7:45 AM CST
+    - cron: '50 12 * * 1'   # 7:50 AM CST
+    - cron: '55 12 * * 1'   # 7:55 AM CST
+    - cron: '0 13 * * 1'    # 8:00 AM CST
+    - cron: '5 13 * * 1'    # 8:05 AM CST
+    - cron: '10 13 * * 1'   # 8:10 AM CST
+    - cron: '15 13 * * 1'   # 8:15 AM CST
+    - cron: '20 13 * * 1'   # 8:20 AM CST
+    - cron: '25 13 * * 1'   # 8:25 AM CST
+    - cron: '30 13 * * 1'   # 8:30 AM CST
+    
     - cron: '0 12 * * 2'    # 6:00 AM CST
     - cron: '15 12 * * 2'   # 6:15 AM CST
     - cron: '30 12 * * 2'   # 6:30 AM CST
