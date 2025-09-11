@@ -3,49 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email</title>
+    <title>Application for {role} at {Company} – Bhanu Kurakula</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, Helvetica, Verdana, sans-serif; font-size: 15px; color: #232323; }
+        ul { margin-top: 0.2em; }
+        p { margin-bottom: 1em; }
+    </style>
 </head>
 <body>
     <p>Hi {Name},</p>
-
     <p>
-        I'm Bhanu, a recent grad from <b>The University of Illinois at Urbana-Champaign (UIUC)</b> with a <b>Master of Science in
-        Information Management</b> and I have <b>over 2.5+ YoE in Data Engineering</b>. 
-    </p>
-
-    <p>
-
-        I've submitted many applications for Data Engineer roles lately, and I'm reaching out because 
-        I'm genuinely eager for an opportunity to interview and join {Company}'s Data Engineering Team. 
-        I’m passionate about the kind of work data engineering teams at {Company} does and confident that this could be the next 
-        best step in my career.
-
+        I'm Bhanu. I recently graduated from <b>The University of Illinois at Urbana-Champaign (UIUC)</b> with a <b>Master of Science in Information Management</b>,
+        and have <b>over 2.5 years of experience in Data Engineering</b>.
     </p>
 
     <p>A bit about me:</p>
-        <ol>
-            <li>Experience designing and implementing robust data pipelines handling large volumes of data using both <b>ETL and ELT</b>, ensuring efficient data processing and maintaining rigorous data quality standards.</li>
-            <li>Collaborated with both technical and non-technical stakeholders to develop robust <b>data models</b>, design intuitive <b>dashboards</b>, and define key business <b>metrics</b>.</li>
-            <li>Diverse industry experience, including <b>Health, AgTech, Finance, and EdTech</b>, which has given me a broad perspective on data challenges across different sectors.</li>
-            <li>Hands-on experience shipping data products while working with tools like <b>Tableau, Hadoop, Databricks, Snowflake, AWS, Airflow and Alteryx</b>.</li>
-            <li>Ability to <b>automate/reduce manual effort using IaC (CloudFormation, Terraform)</b> and other best devops practices.</li>
-        </ol>
-        
+    <ul>
+        <li><b>Engineered robust data pipelines</b> handling large volume ETL and ELT, with strong focus on data quality.</li>
+        <li><b>Collaborated with both technical and non-technical stakeholders</b> to build effective data models, dashboards, and define key metrics.</li>
+        <li>Experience across <b>Health, AgTech, Finance, and EdTech</b>, gaining a broad perspective on sector-specific data challenges.</li>
+        <li>Shipped data products using tools like <b>Tableau, Hadoop, Databricks, Snowflake, AWS, Airflow, and Alteryx</b>.</li>
+    </ul>
+
+    <p>
+        <b>
+        I'm genuinely interested in joining {Company} and believe I could add real value while continuing to learn and grow.
+        If there’s any opportunity that matches my background—or even if you have any advice—I’d be grateful to hear from you.
+        </b>
+    </p>
+
     <p>
         <b>I'm available to join immediately.</b>
-        I've attached my resume, and you can also check out more of my work on my portfolio.
+        You can see more of my work in my portfolio below.
     </p>
-
     <p>
-       Thank you so much for your time and consideration. If you have any opportunities that match my background—or any advice to share—I’d really appreciate hearing from you!
+        Thank you very much for your time and consideration.<br>
+        I look forward to any guidance or opportunities you can share!
     </p>
-
-    <p>Best Regards,<br>
-    Bhanu Kurakula<br>
-    <a href='http://linkedin.com/in/bhanukurakula/'>Linkedin</a> | <a href='https://sites.google.com/view/bhanukurakula/projects'>Portfolio</a>
+    <p>
+        Best regards,<br>
+        Bhanu Kurakula<br>
+        <a href='http://linkedin.com/in/bhanukurakula/'>LinkedIn</a> | 
+        <a href='https://sites.google.com/view/bhanukurakula/projects'>Portfolio</a>
     </p>
-
-
-
 </body>
 </html>
